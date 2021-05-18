@@ -16,6 +16,8 @@ public class EnemyController : MonoBehaviour
     [SerializeField] float m_lifeTime = 10f;
     Rigidbody2D m_rb = null;
     PhotonView m_view = null;
+    [SerializeField]
+    int m_score = 5;
     float m_timer = 0f;
 
     void Start()
@@ -48,4 +50,5 @@ public class EnemyController : MonoBehaviour
             PhotonNetwork.Destroy(this.gameObject);
         }
     }
+
 }
