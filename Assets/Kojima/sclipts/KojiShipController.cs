@@ -16,6 +16,23 @@ public class KojiShipController : MonoBehaviour
     Rigidbody2D m_rb = null;
     PhotonView m_view = null;
 
+
+    /// <summary>
+    /// ダッシュ力
+    /// </summary>
+    [SerializeField]
+    float dashPower;
+    /// <summary>
+    /// ダッシュ状態を解除するスピード
+    /// </summary>
+    [SerializeField]
+    float dashEndSpeed;
+    /// <summary>
+    /// ダッシュ中かどうか
+    /// </summary>
+    bool isDashing;
+
+
     void Start()
     {
         m_rb = GetComponent<Rigidbody2D>();
@@ -26,11 +43,25 @@ public class KojiShipController : MonoBehaviour
     {
         if (!m_view || !m_view.IsMine) return;      // 自分が生成したものだけ処理する
 
-        Move();
-
-        if (Input.GetButtonDown("Fire1"))
+        if (!isDashing)
         {
-            Fire();
+            Move();
+            if (Input.GetButtonDown("Fire1"))
+            {
+                Fire();
+            }
+        }
+        else
+        {
+            if (m_rb.velocity.magnitude <= dashEndSpeed)
+            {
+                isDashing = false;
+            }
+        }
+
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            Dash();
         }
     }
 
@@ -52,5 +83,18 @@ public class KojiShipController : MonoBehaviour
 
         Vector2 dir = new Vector2(h, v).normalized;
         m_rb.velocity = dir * m_moveSpeed;
+    }
+
+    /// <summary>
+    /// 入力方向にダッシュする
+    /// </summary>
+    void Dash()
+    {
+        float v = Input.GetAxisRaw("Vertical");
+        float h = Input.GetAxisRaw("Horizontal");
+
+        Vector2 dir = new Vector2(h, v).normalized;
+        m_rb.AddForce(dir * dashPower, ForceMode2D.Impulse);
+        isDashing = true;
     }
 }

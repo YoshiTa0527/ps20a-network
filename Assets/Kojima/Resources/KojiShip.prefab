@@ -99,9 +99,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f6446d3dd97c13d4bbba31bb058a8135, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_moveSpeed: 30
+  m_moveSpeed: 15
   m_muzzle: {fileID: 4231874310758295124}
   m_bulletResourceName: Bullet
+  dashPower: 80
+  dashEndSpeed: 5
 --- !u!70 &3232801334683414517
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -131,7 +133,7 @@ Rigidbody2D:
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 1
-  m_LinearDrag: 0
+  m_LinearDrag: 10
   m_AngularDrag: 0.05
   m_GravityScale: 0
   m_Material: {fileID: 0}
