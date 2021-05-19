@@ -43,12 +43,18 @@ public class KojiShipController : MonoBehaviour
     {
         if (!m_view || !m_view.IsMine) return;      // 自分が生成したものだけ処理する
 
+
+        //ダッシュ状態でないときのみ入力を受け付ける
         if (!isDashing)
         {
             Move();
             if (Input.GetButtonDown("Fire1"))
             {
                 Fire();
+            }
+            if (Input.GetKeyDown(KeyCode.Space))
+            {
+                Dash();
             }
         }
         else
@@ -57,11 +63,6 @@ public class KojiShipController : MonoBehaviour
             {
                 isDashing = false;
             }
-        }
-
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            Dash();
         }
     }
 
