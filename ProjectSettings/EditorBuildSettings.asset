@@ -4,17 +4,5 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes:
-  - enabled: 1
-    path: Assets/Scenes/Loader.unity
-    guid: a0410b9aa640fd74b9f610f4ad092eb6
-  - enabled: 1
-    path: Assets/Scenes/Shimada.unity
-    guid: 418d6290f5ca0cf4398b0193adb79b18
-  - enabled: 1
-    path: Assets/Scenes/Nakajima.unity
-    guid: 48b52b4f024be9d4d8793900da887417
-  - enabled: 1
-    path: Assets/Scenes/Tanaka.unity
-    guid: 88bfa61946897a841ac023e4cba54076
+  m_Scenes: []
   m_configObjects: {}

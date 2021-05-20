@@ -83,6 +83,10 @@ public class KojiShipController : MonoBehaviour
         float h = Input.GetAxisRaw("Horizontal");
 
         Vector2 dir = new Vector2(h, v).normalized;
+        if (dir.magnitude <= 0.1)
+        {
+            return;
+        }
         m_rb.velocity = dir * m_moveSpeed;
     }
 
