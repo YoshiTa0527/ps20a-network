@@ -229,7 +229,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cd1f3b0a8e5959a4eb49d8a701189a7e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_enemyResourceName: Enemy 1
+  m_enemyResourceName: Enemy
   m_interval: 3
 --- !u!4 &397252048
 Transform:
@@ -288,7 +288,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cd1f3b0a8e5959a4eb49d8a701189a7e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_enemyResourceName: Enemy 1
+  m_enemyResourceName: Enemy
   m_interval: 3
 --- !u!4 &657107591 stripped
 Transform:
@@ -533,7 +533,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cd1f3b0a8e5959a4eb49d8a701189a7e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_enemyResourceName: Enemy 1
+  m_enemyResourceName: Enemy
   m_interval: 3
 --- !u!4 &1824874620
 Transform:

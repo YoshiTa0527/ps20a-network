@@ -101,7 +101,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_moveSpeed: 30
   m_muzzle: {fileID: 4231874310758295124}
-  m_bulletResourceName: Bullet
+  m_bulletResourceName: Bullet 1
 --- !u!70 &3232801334683414517
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
