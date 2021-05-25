@@ -109,4 +109,39 @@ public class KojiShipController : MonoBehaviour
         isDashing = true;
         cantMove = true;
     }
+
+    /// <summary>
+    /// 他プレイヤーから押されたときに呼ばれる関数
+    /// </summary>
+    /// <param name="power">押される方向と力</param>
+    public void Pushed(Vector2 power)
+    {
+        m_view.RPC("SyncPushed", RpcTarget.Others, power);
+    }
+
+    /// <summary>
+    /// "押された"という情報を同期する。
+    /// </summary>
+    /// <param name="power">押される方向と力</param>
+    [PunRPC]
+    void SyncPushed(Vector2 power)
+    {
+        m_rb.AddForce(power, ForceMode2D.Impulse);
+        cantMove = true;
+    }
+
+    
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        Debug.Log("はいりました");
+        if (isDashing)
+        {
+            KojiShipController other = collision.gameObject.GetComponent<KojiShipController>();
+            if (other)
+            {
+                other.Pushed(m_rb.velocity);
+                Debug.Log("プッシュ！！");
+            }
+        }
+    }
 }
