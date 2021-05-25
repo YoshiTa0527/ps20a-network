@@ -163,6 +163,8 @@ GameObject:
   m_Component:
   - component: {fileID: 337689364}
   - component: {fileID: 337689363}
+  - component: {fileID: 337689366}
+  - component: {fileID: 337689365}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -200,6 +202,32 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &337689365
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 337689362}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d777cba9bc402a941b494d0a1e932cfb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &337689366
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 337689362}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2afb895c2f0379a4a80ca01c27ca9980, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  limitTime: 10
+  messege: ' '
 --- !u!1 &397252046
 GameObject:
   m_ObjectHideFlags: 0
@@ -229,7 +257,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cd1f3b0a8e5959a4eb49d8a701189a7e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_enemyResourceName: Enemy 1
+  m_enemyResourceName: Enemy
   m_interval: 3
 --- !u!4 &397252048
 Transform:
@@ -288,7 +316,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cd1f3b0a8e5959a4eb49d8a701189a7e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_enemyResourceName: Enemy 1
+  m_enemyResourceName: Enemy
   m_interval: 3
 --- !u!4 &657107591 stripped
 Transform:
@@ -533,7 +561,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cd1f3b0a8e5959a4eb49d8a701189a7e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_enemyResourceName: Enemy 1
+  m_enemyResourceName: Enemy
   m_interval: 3
 --- !u!4 &1824874620
 Transform:
@@ -710,11 +738,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3232801334683414521, guid: 7d8d315d2cf70614695fc85a2e53abd3,
-        type: 3}
-      propertyPath: m_bulletResourceName
-      value: Bullet 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7d8d315d2cf70614695fc85a2e53abd3, type: 3}
