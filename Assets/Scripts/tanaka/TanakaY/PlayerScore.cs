@@ -11,6 +11,7 @@ public class PlayerScore : MonoBehaviour
 {
     int m_totalScore;
     [SerializeField] Text m_scoreText = null;
+    [SerializeField] RectTransform[] m_scorePos = null;
     float m_syncTimer;
     float m_syncInterval = 0.1f;
     PhotonView m_view;
@@ -20,17 +21,24 @@ public class PlayerScore : MonoBehaviour
         m_totalScore = 0;
 
         m_view = GetComponent<PhotonView>();
+        SetScoreText();
+
+    }
+
+    private void SetScoreText()
+    {
         if (m_view.IsMine)
         {
+            m_scoreText.rectTransform.position = m_scorePos[0].position;
             m_scoreText.color = Color.blue;
-            m_scoreText.rectTransform.position = new Vector2(50, 50);
+            m_scoreText.text = "PlayerA:" + m_totalScore.ToString();
         }
         else
         {
+            m_scoreText.rectTransform.position = m_scorePos[1].position;
             m_scoreText.color = Color.red;
-            m_scoreText.rectTransform.position = new Vector2(150, 150);
+            m_scoreText.text = "PlayerB:" + m_totalScore.ToString();
         }
-
     }
 
     private void Update()
@@ -41,7 +49,7 @@ public class PlayerScore : MonoBehaviour
         {
             Debug.Log("更新");
             m_syncTimer = 0;
-            m_view.RPC("SyncScore", RpcTarget.All);
+            //m_view.RPC("SyncScore", RpcTarget.All);
         }
     }
 
@@ -59,7 +67,7 @@ public class PlayerScore : MonoBehaviour
     void SyncScore()
     {
         Debug.Log("Called");
-       
+
     }
 
     void RefreshScoreText()
