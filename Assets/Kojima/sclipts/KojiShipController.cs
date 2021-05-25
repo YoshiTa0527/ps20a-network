@@ -32,6 +32,11 @@ public class KojiShipController : MonoBehaviour
     /// </summary>
     bool isDashing;
 
+    /// <summary>
+    /// 操作不能状態かどうか
+    /// </summary>
+    bool cantMove;
+
 
     void Start()
     {
@@ -45,7 +50,7 @@ public class KojiShipController : MonoBehaviour
 
 
         //ダッシュ状態でないときのみ入力を受け付ける
-        if (!isDashing)
+        if (!cantMove)
         {
             Move();
             if (Input.GetButtonDown("Fire1"))
@@ -62,6 +67,7 @@ public class KojiShipController : MonoBehaviour
             if (m_rb.velocity.magnitude <= dashEndSpeed)
             {
                 isDashing = false;
+                cantMove = false;
             }
         }
     }
@@ -101,5 +107,6 @@ public class KojiShipController : MonoBehaviour
         Vector2 dir = new Vector2(h, v).normalized;
         m_rb.AddForce(dir * dashPower, ForceMode2D.Impulse);
         isDashing = true;
+        cantMove = true;
     }
 }
