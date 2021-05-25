@@ -117,6 +117,7 @@ public class KojiShipController : MonoBehaviour
     public void Pushed(Vector2 power)
     {
         m_view.RPC("SyncPushed", RpcTarget.Others, power);
+        m_rb.AddForce(power, ForceMode2D.Impulse);
     }
 
     /// <summary>
@@ -133,13 +134,16 @@ public class KojiShipController : MonoBehaviour
     
     private void OnCollisionEnter2D(Collision2D collision)
     {
+        if (!m_view || !m_view.IsMine) return;      // 自分が生成したものだけ処理する
+
+
         Debug.Log("はいりました");
         if (isDashing)
         {
             KojiShipController other = collision.gameObject.GetComponent<KojiShipController>();
             if (other)
             {
-                other.Pushed(m_rb.velocity);
+                other.Pushed(m_rb.velocity * 5);
                 Debug.Log("プッシュ！！");
             }
         }
