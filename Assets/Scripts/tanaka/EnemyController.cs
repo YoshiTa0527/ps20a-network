@@ -47,7 +47,6 @@ public class EnemyController : MonoBehaviour
         {
             if (collision.tag == "Bullet")
             {
-                /*自分を倒したプレイヤーにスコアを追加する*/
                 PhotonNetwork.Destroy(this.gameObject);
             }
         }
