@@ -26,6 +26,7 @@ public class ScoreManager : MonoBehaviour
 
     private void Update()
     {
+        if (!m_view.IsMine) return;
         m_refleshTimer += Time.deltaTime;
         if (m_refleshTimer > m_refleshInterval)
         {
@@ -43,7 +44,6 @@ public class ScoreManager : MonoBehaviour
         m_playerBScore = bScore;
         m_textA.text = "PlayerA:" + m_playerAScore.ToString();
         m_textB.text = "PlayerB:" + m_playerBScore.ToString();
-
     }
 
     public void AddScore(bool isOwner, int score)
@@ -56,5 +56,6 @@ public class ScoreManager : MonoBehaviour
         {
             m_playerBScore += score;
         }
+        Debug.Log($"PlayerA Score:{m_playerAScore}PlayerB Score:{m_playerBScore}");
     }
 }
