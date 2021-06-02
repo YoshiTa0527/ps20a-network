@@ -288,7 +288,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e23d14be52e2db042aacc5d6941d8dbf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_wall: wall
+  m_wall: Wall
   m_interval: 2
 --- !u!1 &647020571
 GameObject:
@@ -559,7 +559,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e23d14be52e2db042aacc5d6941d8dbf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_wall: wall
+  m_wall: Wall
   m_interval: 2
 --- !u!1 &1574996903
 GameObject:
@@ -743,6 +743,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Enemy
+      objectReference: {fileID: 0}
+    - target: {fileID: 413033244133181894, guid: e93fca3451116c84ab4b96323267addf,
+        type: 3}
+      propertyPath: sceneViewId
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e93fca3451116c84ab4b96323267addf, type: 3}
