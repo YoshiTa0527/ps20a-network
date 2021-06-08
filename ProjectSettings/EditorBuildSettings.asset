@@ -5,19 +5,16 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 0
+  - enabled: 1
     path: Assets/Scenes/Loader.unity
     guid: a0410b9aa640fd74b9f610f4ad092eb6
-  - enabled: 0
+  - enabled: 1
     path: Assets/Scenes/Shimada.unity
     guid: 418d6290f5ca0cf4398b0193adb79b18
-  - enabled: 0
+  - enabled: 1
     path: Assets/Scenes/Nakajima.unity
     guid: 48b52b4f024be9d4d8793900da887417
-  - enabled: 0
+  - enabled: 1
     path: Assets/Scenes/Tanaka.unity
     guid: 88bfa61946897a841ac023e4cba54076
-  - enabled: 1
-    path: Assets/Kondo/Scene/Tanaka 1.unity
-    guid: 5f6b3161aaf26ce47aaef854ba03cda9
   m_configObjects: {}
