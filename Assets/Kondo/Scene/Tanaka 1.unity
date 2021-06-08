@@ -229,7 +229,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cd1f3b0a8e5959a4eb49d8a701189a7e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_enemyResourceName: Enemy
+  m_enemyResourceName: Enemy 1
   m_interval: 3
 --- !u!4 &397252048
 Transform:
@@ -288,7 +288,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cd1f3b0a8e5959a4eb49d8a701189a7e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_enemyResourceName: Enemy
+  m_enemyResourceName: Enemy 1
   m_interval: 3
 --- !u!4 &657107591 stripped
 Transform:
@@ -533,7 +533,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cd1f3b0a8e5959a4eb49d8a701189a7e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_enemyResourceName: Enemy
+  m_enemyResourceName: Enemy 1
   m_interval: 3
 --- !u!4 &1824874620
 Transform:
@@ -710,6 +710,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3232801334683414521, guid: 7d8d315d2cf70614695fc85a2e53abd3,
+        type: 3}
+      propertyPath: m_bulletResourceName
+      value: Bullet 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7d8d315d2cf70614695fc85a2e53abd3, type: 3}
