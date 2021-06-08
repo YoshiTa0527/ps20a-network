@@ -45,7 +45,10 @@ public class EnemyController : MonoBehaviour
     {
         if (m_view && m_view.IsMine)      // 自分が生成したものだけ処理する
         {
-            PhotonNetwork.Destroy(this.gameObject);
+            if (collision.tag == "Bullet")
+            {
+                PhotonNetwork.Destroy(this.gameObject);
+            }
         }
     }
 }
