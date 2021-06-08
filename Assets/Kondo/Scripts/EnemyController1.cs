@@ -6,7 +6,7 @@ using Photon.Pun;
 /// 敵を制御するコンポーネント
 /// 設定した方向に進み、設定した時間が経ったら破棄される
 /// </summary>
-public class EnemyController : MonoBehaviour
+public class EnemyController1 : MonoBehaviour
 {
     /// <summary>動く速さ</summary>
     [SerializeField] float m_moveSpeed = 1f;
@@ -43,9 +43,10 @@ public class EnemyController : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D collision)
     {
-        if (m_view && m_view.IsMine)      // 自分が生成したものだけ処理する
+        if (collision.gameObject.CompareTag("Player") ||
+            collision.gameObject.CompareTag("Bullet"))
         {
-            if (collision.tag == "Bullet")
+            if (m_view && m_view.IsMine)      // 自分が生成したものだけ処理する
             {
                 PhotonNetwork.Destroy(this.gameObject);
             }
