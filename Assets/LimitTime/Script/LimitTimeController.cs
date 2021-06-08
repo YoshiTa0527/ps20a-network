@@ -41,6 +41,7 @@ public class LimitTimeController : MonoBehaviourPunCallbacks, IOnEventCallback
     public void GameStart()
     {
         isGameStart = true;
+        Debug.Log("ゲーム開始");
     }
 
     void Raise()
