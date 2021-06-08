@@ -16,6 +16,33 @@ public class SpaceShipController : MonoBehaviour
     Rigidbody2D m_rb = null;
     PhotonView m_view = null;
 
+
+    /// <summary>
+    /// ダッシュ力
+    /// </summary>
+    [SerializeField]
+    float dashPower;
+    /// <summary>
+    /// ダッシュ状態を解除するスピード
+    /// </summary>
+    [SerializeField]
+    float dashEndSpeed;
+    /// <summary>
+    /// 押す力
+    /// </summary>
+    [SerializeField]
+    float pushPower;
+    /// <summary>
+    /// ダッシュ中かどうか
+    /// </summary>
+    bool isDashing;
+
+    /// <summary>
+    /// 操作不能状態かどうか
+    /// </summary>
+    bool cantMove;
+
+
     void Start()
     {
         m_rb = GetComponent<Rigidbody2D>();
@@ -26,11 +53,27 @@ public class SpaceShipController : MonoBehaviour
     {
         if (!m_view || !m_view.IsMine) return;      // 自分が生成したものだけ処理する
 
-        Move();
 
-        if (Input.GetButtonDown("Fire1"))
+        //ダッシュ状態でないときのみ入力を受け付ける
+        if (!cantMove)
         {
-            Fire();
+            Move();
+            if (Input.GetButtonDown("Fire1"))
+            {
+                Fire();
+            }
+            if (Input.GetKeyDown(KeyCode.Space))
+            {
+                Dash();
+            }
+        }
+        else
+        {
+            if (m_rb.velocity.magnitude <= dashEndSpeed)
+            {
+                isDashing = false;
+                cantMove = false;
+            }
         }
     }
 
@@ -51,6 +94,61 @@ public class SpaceShipController : MonoBehaviour
         float h = Input.GetAxisRaw("Horizontal");
 
         Vector2 dir = new Vector2(h, v).normalized;
+        if (dir.magnitude <= 0.1)
+        {
+            return;
+        }
         m_rb.velocity = dir * m_moveSpeed;
+    }
+
+    /// <summary>
+    /// 入力方向にダッシュする
+    /// </summary>
+    void Dash()
+    {
+        float v = Input.GetAxisRaw("Vertical");
+        float h = Input.GetAxisRaw("Horizontal");
+
+        Vector2 dir = new Vector2(h, v).normalized;
+        m_rb.AddForce(dir * dashPower, ForceMode2D.Impulse);
+        isDashing = true;
+        cantMove = true;
+    }
+
+    /// <summary>
+    /// 他プレイヤーから押されたときに呼ばれる関数
+    /// </summary>
+    /// <param name="power">押される方向と力</param>
+    public void Pushed(Vector2 power)
+    {
+        m_view.RPC("SyncPushed", RpcTarget.Others, power);
+        m_rb.AddForce(power, ForceMode2D.Impulse);
+    }
+
+    /// <summary>
+    /// "押された"という情報を同期する。
+    /// </summary>
+    /// <param name="power">押される方向と力</param>
+    [PunRPC]
+    void SyncPushed(Vector2 power)
+    {
+        m_rb.AddForce(power, ForceMode2D.Impulse);
+        cantMove = true;
+    }
+
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (!m_view || !m_view.IsMine) return;      // 自分が生成したものだけ処理する
+
+        if (isDashing)
+        {
+            SpaceShipController other = collision.gameObject.GetComponent<SpaceShipController>();
+            if (other)
+            {
+                other.Pushed(m_rb.velocity * pushPower);
+                Debug.Log("プッシュ！！");
+            }
+        }
     }
 }
