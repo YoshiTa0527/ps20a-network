@@ -38,3 +38,4 @@ sysinfo.txt
 # Assets
 Assets/Photon*
 .vsconfig
+ProjectSettings/EditorBuildSettings.asset.rej

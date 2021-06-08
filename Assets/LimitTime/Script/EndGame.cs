@@ -30,5 +30,6 @@ public class EndGame : MonoBehaviourPunCallbacks, IOnEventCallback
     private void GameSet()
     {
         Debug.Log("TimeOver");
+
     }
 }
