@@ -8,7 +8,12 @@ public class WallGenerator : MonoBehaviour
     /// <summary>
     /// 生成する壁のオブジェクト
     /// </summary>
-    [SerializeField] string m_wall = "wall";
+    [SerializeField] string[] m_walls;
+
+    /// <summary>
+    /// 生成される壁のインデックス
+    /// </summary>
+    int m_indexNum = 0;
 
     /// <summary>
     /// 生成する間隔
@@ -29,7 +34,14 @@ public class WallGenerator : MonoBehaviour
         if (m_timer > m_interval)
         {
             m_timer = 0;
-            PhotonNetwork.Instantiate(m_wall, this.transform.position, Quaternion.identity);
+            if (m_indexNum >= m_walls.Length)
+            {
+                m_indexNum = 0;
+            }
+
+            PhotonNetwork.Instantiate(m_walls[m_indexNum], this.transform.position, Quaternion.identity);
+
+            m_indexNum++;
         }
     }
 }
