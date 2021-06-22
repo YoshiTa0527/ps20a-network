@@ -23,6 +23,7 @@ public class LimitTimeController : MonoBehaviourPunCallbacks, IOnEventCallback
         if (isGameStart == true && PhotonNetwork.LocalPlayer.ActorNumber == 1)
         {
             limitTime -= Time.deltaTime;
+            Debug.Log(limitTime);
             if (limitTime < 0)
             {
                 Raise();
@@ -46,6 +47,7 @@ public class LimitTimeController : MonoBehaviourPunCallbacks, IOnEventCallback
 
     void Raise()
     {
+        Debug.Log("ゲーム終了");
         byte eventCode = 1;
         RaiseEventOptions raiseEventOptions = new RaiseEventOptions
         {

@@ -38,6 +38,7 @@ public class EnemyGenerator : MonoBehaviourPunCallbacks, IOnEventCallback
 
     void IOnEventCallback.OnEvent(EventData e)
     {
+        //Debug.Log($"{this.name} が {e.Code.ToString()} を受け取った");
         if ((int)e.Code == 1)
         {
             EnemyInstanceStop();
