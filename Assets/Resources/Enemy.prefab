@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: 413033244133181893}
   - component: {fileID: 413033244133181891}
   - component: {fileID: 208481245851931623}
+  - component: {fileID: 6990511503310836011}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Enemy
@@ -201,3 +202,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_score: 5
+--- !u!114 &6990511503310836011
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 413033244133181892}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c40d882c46ed2224fbd7c6f1d9c169de, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_bulletResourceName: EnemyBullet
+  m_interval: 1
