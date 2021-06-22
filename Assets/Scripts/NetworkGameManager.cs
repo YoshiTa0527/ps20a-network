@@ -80,19 +80,7 @@ public class NetworkGameManager : MonoBehaviourPunCallbacks // Photon Realtime �
         if (PhotonNetwork.IsConnected)
         {
             //ルーム参加を試みる
-            if (!PhotonNetwork.JoinRoom(m_roomName))
-            {
-                //ルーム参加失敗時は作成を試みる
-                RoomOptions roomOptions = new RoomOptions();
-                roomOptions.IsVisible = true;   // 誰でも参加できるようにする
-                roomOptions.MaxPlayers = (byte)m_spawnPositions.Length;
-                if (!PhotonNetwork.CreateRoom(m_roomName, roomOptions))
-                {
-                    //作成にも失敗した場合はロビーに戻る
-                    SceneLoader loader = new SceneLoader();
-                    loader.LoadScene(m_lobbySceneName);
-                }
-            }
+            PhotonNetwork.JoinRoom(m_roomName);
         }
     }
 
@@ -220,6 +208,9 @@ public class NetworkGameManager : MonoBehaviourPunCallbacks // Photon Realtime �
     public override void OnCreateRoomFailed(short returnCode, string message)
     {
         Debug.Log("OnCreateRoomFailed: " + message);
+        //作成にも失敗した場合はロビーに戻る
+        SceneLoader loader = new SceneLoader();
+        loader.LoadScene(m_lobbySceneName);
     }
 
     /// <summary>部屋に入室した時</summary>
@@ -233,6 +224,12 @@ public class NetworkGameManager : MonoBehaviourPunCallbacks // Photon Realtime �
     public override void OnJoinRoomFailed(short returnCode, string message)
     {
         Debug.Log("OnJoinRoomFailed: " + message);
+        Debug.Log("ルーム作成失敗");
+        //ルーム参加失敗時は作成を試みる
+        RoomOptions roomOptions = new RoomOptions();
+        roomOptions.IsVisible = true;   // 誰でも参加できるようにする
+        roomOptions.MaxPlayers = (byte)m_spawnPositions.Length;
+        PhotonNetwork.CreateRoom(m_roomName, roomOptions);
     }
 
     /// <summary>ランダムな部屋への入室に失敗した時</summary>
