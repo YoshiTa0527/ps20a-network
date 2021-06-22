@@ -239,7 +239,6 @@ public class NetworkGameManager : MonoBehaviourPunCallbacks // Photon Realtime �
     public override void OnJoinRandomFailed(short returnCode, string message)
     {
         Debug.Log("OnJoinRandomFailed: " + message);
-        CreateRandomRoom();
     }
 
     /// <summary>部屋から退室した時</summary>
