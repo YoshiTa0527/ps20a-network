@@ -10,6 +10,7 @@ public class LimitTimeController : MonoBehaviourPunCallbacks, IOnEventCallback
 {
     [SerializeField] private float limitTime = 10;
     private bool isGameStart = false;
+    private bool isGameEnd = false;
     [SerializeField] private string messege = " ";
     // Start is called before the first frame update
     void Start()
@@ -20,13 +21,15 @@ public class LimitTimeController : MonoBehaviourPunCallbacks, IOnEventCallback
     // Update is called once per frame
     void Update()
     {
-        if (isGameStart == true && PhotonNetwork.LocalPlayer.ActorNumber == 1)
+        if (!PhotonNetwork.InRoom || !PhotonNetwork.IsMasterClient) return;
+        if (isGameStart == true)
         {
             limitTime -= Time.deltaTime;
-            Debug.Log(limitTime);
-            if (limitTime < 0)
+            //Debug.Log(limitTime);
+            if (limitTime < 0 && isGameEnd == false)
             {
                 Raise();
+                isGameEnd = true;
             }
         }
     }
