@@ -7,10 +7,22 @@ using Photon.Realtime;
 
 public class NetworkGameManager : MonoBehaviourPunCallbacks // Photon Realtime 用のクラスを継承する
 {
+    [SerializeField] string m_lobbySceneName = "Lobby";
+
     /// <summary>プレイヤーのプレハブの名前</summary>
     [SerializeField] string m_playerPrefabName = "Prefab";
     /// <summary>プレイヤーを生成する場所を示すアンカーのオブジェクト</summary>
     [SerializeField] Transform[] m_spawnPositions = default;
+
+    /// <summary>
+    /// プレイヤー名
+    /// </summary>
+    public static string m_playerName;
+
+    /// <summary>
+    /// 部屋名
+    /// </summary>
+    public static string m_roomName;
 
     private void Awake()
     {
@@ -56,6 +68,30 @@ public class NetworkGameManager : MonoBehaviourPunCallbacks // Photon Realtime �
         if (PhotonNetwork.IsConnected)
         {
             PhotonNetwork.JoinLobby();
+        }
+    }
+
+    /// <summary>
+    /// 指定された部屋に参加を試み、ない場合は作成する
+    /// </summary>
+    private void JoinRoom()
+    {
+        if (PhotonNetwork.IsConnected)
+        {
+            //ルーム参加を試みる
+            if (!PhotonNetwork.JoinRoom(m_roomName))
+            {
+                //ルーム参加失敗時は作成を試みる
+                RoomOptions roomOptions = new RoomOptions();
+                roomOptions.IsVisible = true;   // 誰でも参加できるようにする
+                roomOptions.MaxPlayers = (byte)m_spawnPositions.Length;
+                if (!PhotonNetwork.CreateRoom(m_roomName, roomOptions))
+                {
+                    //作成にも失敗した場合はロビーに戻る
+                    SceneLoader loader = new SceneLoader();
+                    loader.LoadScene(m_lobbySceneName);
+                }
+            }
         }
     }
 
@@ -125,7 +161,7 @@ public class NetworkGameManager : MonoBehaviourPunCallbacks // Photon Realtime �
     public override void OnConnected()
     {
         Debug.Log("OnConnected");
-        SetMyNickName(System.Environment.UserName + "@" + System.Environment.MachineName);
+        SetMyNickName(m_playerName + "@" + System.Environment.MachineName);
     }
 
     /// <summary>Photon との接続が切れた時</summary>
@@ -144,8 +180,16 @@ public class NetworkGameManager : MonoBehaviourPunCallbacks // Photon Realtime �
     /// <summary>ロビーに参加した時</summary>
     public override void OnJoinedLobby()
     {
+        //ルーム名が指定されているときはその部屋にジョイン、違う場合はランダムにジョイン
         Debug.Log("OnJoinedLobby");
-        JoinExistingRoom();
+        if (string.IsNullOrEmpty(m_roomName))
+        {
+            JoinExistingRoom();
+        }
+        else
+        {
+            JoinRoom();
+        }
     }
 
     /// <summary>ロビーから出た時</summary>
