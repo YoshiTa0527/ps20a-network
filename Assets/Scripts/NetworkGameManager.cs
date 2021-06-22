@@ -13,6 +13,7 @@ public class NetworkGameManager : MonoBehaviourPunCallbacks // Photon Realtime �
     [SerializeField] string m_playerPrefabName = "Prefab";
     /// <summary>プレイヤーを生成する場所を示すアンカーのオブジェクト</summary>
     [SerializeField] Transform[] m_spawnPositions = default;
+    private string messege = " ";
 
     /// <summary>
     /// プレイヤー名
@@ -148,9 +149,20 @@ public class NetworkGameManager : MonoBehaviourPunCallbacks // Photon Realtime �
         {
             Debug.Log("Closing Room");
             PhotonNetwork.CurrentRoom.IsOpen = false;
+            Raise();
         }
     }
 
+    void Raise()
+    {
+        byte eventCode = 0;
+        RaiseEventOptions raiseEventOptions = new RaiseEventOptions
+        {
+            Receivers = ReceiverGroup.All
+        };
+        SendOptions sendOptions = new SendOptions();
+        PhotonNetwork.RaiseEvent(eventCode, messege, raiseEventOptions, sendOptions);
+    }
     /* ***********************************************
      * 
      * これ以降は Photon の Callback メソッド
