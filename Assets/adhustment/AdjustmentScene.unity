@@ -365,6 +365,8 @@ GameObject:
   m_Component:
   - component: {fileID: 337689364}
   - component: {fileID: 337689363}
+  - component: {fileID: 337689366}
+  - component: {fileID: 337689365}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -402,6 +404,32 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &337689365
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 337689362}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2afb895c2f0379a4a80ca01c27ca9980, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  limitTime: 10
+  messege: "\u3046\u308F\u30FC\uFF01\uFF01\uFF01\uFF01"
+--- !u!114 &337689366
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 337689362}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d777cba9bc402a941b494d0a1e932cfb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &353844327
 GameObject:
   m_ObjectHideFlags: 0
