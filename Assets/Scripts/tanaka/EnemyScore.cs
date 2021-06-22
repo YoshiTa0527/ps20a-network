@@ -15,7 +15,6 @@ public class EnemyScore : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-
         if (collision.tag == "Bullet")
         {
             Debug.Log("hitOnTrigger");
@@ -23,7 +22,6 @@ public class EnemyScore : MonoBehaviour
             if (bulletView)
                 ScoreManager.current.AddScore(bulletView.Owner.IsMasterClient, m_score);
         }
-
     }
 
 }
