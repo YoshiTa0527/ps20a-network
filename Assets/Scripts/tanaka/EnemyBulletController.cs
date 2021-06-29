@@ -43,8 +43,7 @@ public class EnemyBulletController : MonoBehaviour
     void OnTriggerEnter2D(Collider2D collision)
     {
         // プレイヤーにぶつかったら弾を消す
-        if (collision.gameObject.CompareTag("Bullet") ||
-            collision.gameObject.CompareTag("Player"))
+        if (collision.gameObject.CompareTag("Player"))
         {
             if (m_view && m_view.IsMine)    // 自分が生成したものだけ処理する
             {
