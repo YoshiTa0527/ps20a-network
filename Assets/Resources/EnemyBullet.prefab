@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: -289013038654006689}
   - component: {fileID: 2567895766644602471}
   - component: {fileID: 7682290064987404929}
-  - component: {fileID: 7336664681712486124}
+  - component: {fileID: -5719678499788663244}
   m_Layer: 0
   m_Name: EnemyBullet
   m_TagString: EnemyBullet
@@ -163,7 +163,7 @@ MonoBehaviour:
   m_SynchronizeAngularVelocity: 0
   m_TeleportEnabled: 0
   m_TeleportIfDistanceGreaterThan: 3
---- !u!114 &7336664681712486124
+--- !u!114 &-5719678499788663244
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -172,9 +172,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 7071605144458808092}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f4cba869135b5f949a93e289093c2a6d, type: 3}
+  m_Script: {fileID: 11500000, guid: 8f696de88279df54f8726d19ed132fd2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_speed: 30
+  m_speed: 10
   m_direction: {x: -1, y: 0}
-  m_lifeTime: 2.5
+  m_lifeTime: 30
