@@ -15,7 +15,7 @@ public class SpaceShipController : MonoBehaviour
     [SerializeField] string m_bulletResourceName = "PrefabResourceName";
     Rigidbody2D m_rb = null;
     PhotonView m_view = null;
-
+    SpriteRenderer m_spriteRenderer = null;
 
     /// <summary>
     /// ダッシュ力
@@ -42,29 +42,66 @@ public class SpaceShipController : MonoBehaviour
     /// </summary>
     bool cantMove;
 
+    #region 無敵時の処理に関するメンバ変数群
+    /// <summary>
+    /// 無敵時の機体の色
+    /// </summary>
+    [SerializeField] private Color m_invincibleColor = new Color(255, 255, 255, 100);
+    /// <summary>
+    /// 通常時の機体の色
+    /// </summary>
+    private Color m_defaltColor;
+    /// <summary>
+    /// 無敵時間
+    /// </summary>
+    [SerializeField] private int m_invincibleTime = 3;
+    /// <summary>
+    /// 経過時間
+    /// </summary>
+    private float m_elapsedTime = 0;
+    /// <summary>
+    /// 無敵状態か [true: 無敵 / false:通常]
+    /// </summary>
+    private bool m_isInvincible = false;
+    /// <summary>
+    /// 移動以外の行動が不能な状態か
+    /// [true: 不能状態である / false: 不能状態でない]
+    /// </summary>
+    private bool m_cantAction = false;
+    #endregion
 
     void Start()
     {
         m_rb = GetComponent<Rigidbody2D>();
         m_view = GetComponent<PhotonView>();
+        m_spriteRenderer = GetComponent<SpriteRenderer>();
+        m_defaltColor = m_spriteRenderer.material.color;
     }
 
     void Update()
     {
         if (!m_view || !m_view.IsMine) return;      // 自分が生成したものだけ処理する
 
+        //無敵状態だったら
+        if (m_isInvincible)
+        {
+            OffInvincibleByTimeCourse();
+        }
 
         //ダッシュ状態でないときのみ入力を受け付ける
         if (!cantMove)
         {
             Move();
-            if (Input.GetButtonDown("Fire1"))
+            if (!m_cantAction)
             {
-                Fire();
-            }
-            if (Input.GetKeyDown(KeyCode.Space))
-            {
-                Dash();
+                if (Input.GetButtonDown("Fire1"))
+                {
+                    Fire();
+                }
+                if (Input.GetKeyDown(KeyCode.Space))
+                {
+                    Dash();
+                }
             }
         }
         else
@@ -136,6 +173,50 @@ public class SpaceShipController : MonoBehaviour
         cantMove = true;
     }
 
+    /// <summary>
+    /// 時間経過で無敵状態を解除する
+    /// </summary>
+    private void OffInvincibleByTimeCourse()
+    {
+        //時間をカウントする
+        m_elapsedTime += Time.deltaTime;
+
+        //設定された無敵状態の時間経過したら無敵状態を抜ける
+        if (m_elapsedTime >= m_invincibleTime)
+        {
+            m_isInvincible = false;
+            m_cantAction = false;
+            m_elapsedTime = 0;
+
+            //機体を通常時の色に戻す
+            m_spriteRenderer.material.color = m_defaltColor;
+            Debug.Log("無敵状態から抜けました");
+
+            m_view.RPC("SyncInvincibleOff", RpcTarget.Others);
+        }
+    }
+
+    /// <summary>
+    /// 無敵状態が解除されたことを同期する
+    /// </summary>
+    [PunRPC]
+    void SyncInvincibleOff()
+    {
+        m_isInvincible = false;
+        m_spriteRenderer.material.color = m_defaltColor;
+    }
+
+    /// <summary>
+    /// 無敵状態にする
+    /// </summary>
+    private void OnInvivcible()
+    {
+        m_cantAction = true;
+        m_isInvincible = true;
+
+        //機体を無敵時の色にする
+        m_spriteRenderer.material.color = m_invincibleColor;
+    }
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
@@ -149,6 +230,21 @@ public class SpaceShipController : MonoBehaviour
                 other.Pushed(m_rb.velocity * pushPower);
                 Debug.Log("プッシュ！！");
             }
+        }
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        //敵、敵の弾にぶつかったら無敵になる
+        if (collision.gameObject.CompareTag("EnemyBullet") ||
+            collision.gameObject.CompareTag("Enemy"))
+        {
+            //無敵状態じゃなかったら
+            if (!m_isInvincible)
+            {
+                OnInvivcible();
+            }
+            Debug.Log("無敵状態に入りました");
         }
     }
 }

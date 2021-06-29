@@ -105,6 +105,8 @@ MonoBehaviour:
   dashPower: 100
   dashEndSpeed: 0.7
   pushPower: 1.5
+  m_invincibleColor: {r: 0.7490196, g: 0.7490196, b: 0.7490196, a: 0.6509804}
+  m_invincibleTime: 3
 --- !u!70 &3232801334683414517
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
