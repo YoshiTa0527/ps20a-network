@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 3232801334683414520}
   - component: {fileID: -1872660061816194657}
   - component: {fileID: -4944419974066559171}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: SpaceShip
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -192,7 +192,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4231874310758295124}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Muzzle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
