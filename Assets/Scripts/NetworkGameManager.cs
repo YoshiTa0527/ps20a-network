@@ -7,7 +7,7 @@ using Photon.Realtime;
 
 public class NetworkGameManager : MonoBehaviourPunCallbacks // Photon Realtime 用のクラスを継承する
 {
-    [SerializeField] string m_lobbySceneName = "Lobby";
+    [SerializeField] string m_lobbySceneName = "LobbyCopied";
 
     /// <summary>プレイヤーのプレハブの名前</summary>
     [SerializeField] string m_playerPrefabName = "Prefab";
