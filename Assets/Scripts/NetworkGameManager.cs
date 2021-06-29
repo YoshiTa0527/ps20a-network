@@ -18,12 +18,12 @@ public class NetworkGameManager : MonoBehaviourPunCallbacks // Photon Realtime �
     /// <summary>
     /// プレイヤー名
     /// </summary>
-    public static string m_playerName;
+    public static string m_playerName = null;
 
     /// <summary>
     /// 部屋名
     /// </summary>
-    public static string m_roomName;
+    public static string m_roomName = null;
 
     private void Awake()
     {
@@ -236,6 +236,7 @@ public class NetworkGameManager : MonoBehaviourPunCallbacks // Photon Realtime �
     public override void OnJoinRandomFailed(short returnCode, string message)
     {
         Debug.Log("OnJoinRandomFailed: " + message);
+        CreateRandomRoom();
     }
 
     /// <summary>部屋から退室した時</summary>
