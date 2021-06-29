@@ -68,7 +68,14 @@ public class NetworkGameManager : MonoBehaviourPunCallbacks // Photon Realtime ç
     {
         if (PhotonNetwork.IsConnected)
         {
-            PhotonNetwork.JoinLobby();
+            if (string.IsNullOrEmpty(m_roomName))
+            {
+                PhotonNetwork.JoinLobby(new TypedLobby("public", LobbyType.Default));
+            }
+            else
+            {
+                PhotonNetwork.JoinLobby(new TypedLobby("private", LobbyType.Default));
+            }
         }
     }
 
