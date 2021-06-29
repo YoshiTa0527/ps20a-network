@@ -2,8 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 using Photon.Pun;
+using ExitGames.Client.Photon;
+using Photon.Realtime;
 
-public class WallGenerator : MonoBehaviour
+public class WallGenerator : MonoBehaviourPunCallbacks, IOnEventCallback
 {
     /// <summary>
     /// 生成する壁のオブジェクト
@@ -25,23 +27,44 @@ public class WallGenerator : MonoBehaviour
     /// </summary>
     float m_timer = 0f;
 
+    /// <summary>
+    /// 生成フラグ
+    /// </summary>
+    bool m_generatorFlag = false;
+
     void Update()
     {
         if (!PhotonNetwork.InRoom || !PhotonNetwork.IsMasterClient) return;
 
         m_timer += Time.deltaTime;
 
-        if (m_timer > m_interval)
+        if (!m_generatorFlag)
         {
-            m_timer = 0;
-            if (m_indexNum >= m_walls.Length)
+            if (m_timer > m_interval)
             {
-                m_indexNum = 0;
+                m_timer = 0;
+                if (m_indexNum >= m_walls.Length)
+                {
+                    m_indexNum = 0;
+                }
+
+                PhotonNetwork.Instantiate(m_walls[m_indexNum], this.transform.position, Quaternion.identity);
+
+                m_indexNum++;
             }
-
-            PhotonNetwork.Instantiate(m_walls[m_indexNum], this.transform.position, Quaternion.identity);
-
-            m_indexNum++;
         }
+    }
+
+    void IOnEventCallback.OnEvent(EventData a)
+    {
+        if ((int)a.Code == 1)
+        {
+            Generato();
+        }
+    }
+
+    void Generato()
+    {
+        m_generatorFlag = true;
     }
 }
