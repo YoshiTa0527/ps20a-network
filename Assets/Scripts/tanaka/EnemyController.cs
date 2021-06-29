@@ -39,12 +39,7 @@ public class EnemyController : MonoBehaviourPunCallbacks, IOnEventCallback
 
         m_timer += Time.deltaTime;
 
-        if (m_timer > m_lifeTime)
-        {
-            PhotonNetwork.Destroy(this.gameObject);
-        }
-
-        if (isDeath)
+        if (m_timer > m_lifeTime || isDeath)
         {
             PhotonNetwork.Destroy(this.gameObject);
         }
@@ -59,11 +54,28 @@ public class EnemyController : MonoBehaviourPunCallbacks, IOnEventCallback
             {
                 if (!PhotonNetwork.InRoom || !PhotonNetwork.IsMasterClient)
                 {
-                    Raise();
+                    if (!isDeath)
+                    {
+                        Raise();
+                        Debug.Log("弾が当たった");
+                    }
+                    else
+                    {
+                        return;
+                    }
                 }
                 else
                 {
-                    isDeath = true;
+                    if (!isDeath)
+                    {
+                        isDeath = true;
+                        Debug.Log("弾が当たった");
+                    }
+                    else
+                    {
+                        return;
+                    }
+                    
                 }
             }
         }
