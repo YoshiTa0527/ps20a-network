@@ -4,28 +4,24 @@ using UnityEngine;
 using ExitGames.Client.Photon;
 using Photon.Pun;
 using Photon.Realtime;
+using UnityEngine.UI;
 
 
 public class LimitTimeController : MonoBehaviourPunCallbacks, IOnEventCallback
 {
     [SerializeField] private float limitTime = 10;
+    [SerializeField] Text limitTimeText = default;
     private bool isGameStart = false;
     private bool isGameEnd = false;
     [SerializeField] private string messege = " ";
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
 
-    // Update is called once per frame
     void Update()
     {
         if (!PhotonNetwork.InRoom || !PhotonNetwork.IsMasterClient) return;
         if (isGameStart == true)
         {
             limitTime -= Time.deltaTime;
-            //Debug.Log(limitTime);
+            if (limitTimeText) limitTimeText.text = limitTime.ToString("F1");
             if (limitTime < 0 && isGameEnd == false)
             {
                 Raise();
