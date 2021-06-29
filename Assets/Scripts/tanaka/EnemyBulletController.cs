@@ -40,18 +40,6 @@ public class EnemyBulletController : MonoBehaviour
         }
     }
 
-    //void OnCollisionEnter2D(Collision2D collision)
-    //{
-    //    //敵にぶつかったら弾を消す
-    //    if (collision.gameObject.CompareTag("Enemy"))
-    //    {
-    //        if (m_view && m_view.IsMine)    // 自分が生成したものだけ処理する
-    //        {
-    //            PhotonNetwork.Destroy(this.gameObject);
-    //        }
-    //    }
-    //}
-
     void OnTriggerEnter2D(Collider2D collision)
     {
         // プレイヤーにぶつかったら弾を消す
