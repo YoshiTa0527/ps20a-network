@@ -8,7 +8,7 @@ using ExitGames.Client.Photon;
 /// <summary>
 /// 敵を生成するコンポーネント
 /// </summary>
-public class EnemyGenerator : MonoBehaviourPunCallbacks, IOnEventCallback
+public class EnemyGenerator1 : MonoBehaviourPunCallbacks, IOnEventCallback
 {
     /// <summary>敵として生成するプレハブの名前</summary>
     [SerializeField] string m_enemyResourceName = "PrefabResourceName";
