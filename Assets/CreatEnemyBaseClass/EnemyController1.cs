@@ -22,16 +22,13 @@ public class EnemyController1 : MonoBehaviour
     {
         m_rb = GetComponent<Rigidbody2D>();
         m_view = GetComponent<PhotonView>();
-
-        if (m_view && m_view.IsMine)      // 自分が生成したものだけ処理する
-        {
-            m_rb.velocity = m_moveDirection.normalized * m_moveSpeed;
-        }
     }
 
     void Update()
     {
-        if (!m_view || !m_view.IsMine) return;      // 自分が生成したものだけ処理する
+        if (!m_view || !m_view.IsMine) return;
+
+        Move();
 
         m_timer += Time.deltaTime;
 
@@ -41,11 +38,17 @@ public class EnemyController1 : MonoBehaviour
         }
     }
 
+    void Move()
+    {
+        m_rb.velocity = m_moveDirection.normalized * m_moveSpeed;
+    }
+
     void OnTriggerEnter2D(Collider2D collision)
     {
-        if (m_view && m_view.IsMine)      // 自分が生成したものだけ処理する
+        if (m_view && m_view.IsMine)
         {
-            if (collision.tag == "Player")
+            if (collision.tag == "Player" ||
+                collision.tag == "Bullet")
             {
                 PhotonNetwork.Destroy(this.gameObject);
             }

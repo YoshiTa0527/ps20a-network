@@ -280,6 +280,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1482e4240864cd246bd82d61fb954bc9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_lobbySceneName: Lobby
   m_playerPrefabName: SpaceShip
   m_spawnPositions:
   - {fileID: 922636585}
@@ -327,7 +328,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cd1f3b0a8e5959a4eb49d8a701189a7e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_enemyResourceName: Enemy
+  m_enemyResourceName: Enemy 1
   m_interval: 3
 --- !u!4 &397252048
 Transform:
@@ -386,7 +387,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cd1f3b0a8e5959a4eb49d8a701189a7e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_enemyResourceName: Enemy
+  m_enemyResourceName: Enemy 1
   m_interval: 3
 --- !u!4 &657107591
 Transform:
@@ -753,7 +754,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cd1f3b0a8e5959a4eb49d8a701189a7e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_enemyResourceName: Enemy
+  m_enemyResourceName: Enemy 1
   m_interval: 3
 --- !u!4 &1824874620
 Transform:

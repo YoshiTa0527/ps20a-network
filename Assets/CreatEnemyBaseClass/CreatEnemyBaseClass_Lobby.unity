@@ -290,7 +290,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 398eae8035f980343b71d469024e3d6c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameSceneName: Tanaka
+  gameSceneName: CreatEnemyBaseClass_Main
   playerNameInput: {fileID: 2145515973}
   roomNameInput: {fileID: 32048329}
 --- !u!4 &79898274
@@ -730,8 +730,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fdb4a0ff21ae368449dfd83e311df7de, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_textA: {fileID: 0}
-  m_textB: {fileID: 0}
+  m_textA: {fileID: 1928700858}
+  m_textB: {fileID: 1086464492}
   m_refleshInterval: 0.1
 --- !u!4 &835219756
 Transform:
