@@ -1,12 +1,14 @@
 ﻿using UnityEngine;
 // Photon 用の名前空間を参照する
 using Photon.Pun;
+using ExitGames.Client.Photon;
+using Photon.Realtime;
 
 /// <summary>
 /// 敵を制御するコンポーネント
 /// 設定した方向に進み、設定した時間が経ったら破棄される
 /// </summary>
-public class EnemyController : MonoBehaviour
+public class EnemyController : MonoBehaviourPunCallbacks, IOnEventCallback
 {
     /// <summary>動く速さ</summary>
     [SerializeField] float m_moveSpeed = 1f;
@@ -17,6 +19,8 @@ public class EnemyController : MonoBehaviour
     Rigidbody2D m_rb = null;
     PhotonView m_view = null;
     float m_timer = 0f;
+    bool isDeath = false;
+    [SerializeField] private string messege = " ";
 
     void Start()
     {
@@ -35,7 +39,7 @@ public class EnemyController : MonoBehaviour
 
         m_timer += Time.deltaTime;
 
-        if (m_timer > m_lifeTime)
+        if (m_timer > m_lifeTime || isDeath)
         {
             PhotonNetwork.Destroy(this.gameObject);
         }
@@ -48,8 +52,57 @@ public class EnemyController : MonoBehaviour
             if (collision.tag == "Bullet" ||
                 collision.tag == "Player")
             {
-                PhotonNetwork.Destroy(this.gameObject);
+                if (!PhotonNetwork.InRoom || !PhotonNetwork.IsMasterClient)
+                {
+                    if (!isDeath)
+                    {
+                        Raise();
+                        Debug.Log("弾が当たった");
+                    }
+                    else
+                    {
+                        return;
+                    }
+                }
+                else
+                {
+                    if (!isDeath)
+                    {
+                        isDeath = true;
+                        Debug.Log("弾が当たった");
+                    }
+                    else
+                    {
+                        return;
+                    }
+                    
+                }
             }
         }
+    }
+
+    void IOnEventCallback.OnEvent(EventData e)
+    {
+        if ((int)e.Code == 2)
+        {
+            EnemyDestroy();
+        }
+    }
+
+
+    void EnemyDestroy()
+    {
+        isDeath = true;
+    }
+    void Raise()
+    {
+        //Debug.Log("ゲーム終了");
+        byte eventCode = 2;
+        RaiseEventOptions raiseEventOptions = new RaiseEventOptions
+        {
+            Receivers = ReceiverGroup.MasterClient
+        };
+        SendOptions sendOptions = new SendOptions();
+        PhotonNetwork.RaiseEvent(eventCode, messege, raiseEventOptions, sendOptions);
     }
 }
