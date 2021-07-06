@@ -8,11 +8,6 @@ public class Result : MonoBehaviour
     [SerializeField] Text m_winerText = default;
     [SerializeField] Text m_loserText = default;
 
-    private void Awake()
-    {
-        this.gameObject.SetActive(false);
-    }
-
     public void SetResult(int playerAScore, int playerBScore)
     {
         Debug.Log("Result:Call");

@@ -16,7 +16,8 @@ public class ScoreManager : MonoBehaviourPunCallbacks, IOnEventCallback
     [SerializeField] Text m_textA = null;
     [SerializeField] Text m_textB = null;
     [SerializeField] float m_refleshInterval = 0.1f;
-    [SerializeField] Result m_result = default;
+    [SerializeField] GameObject m_result = default;
+    [SerializeField] Transform m_canvas;
     int m_playerAScore;
     int m_playerBScore;
     float m_refleshTimer;
@@ -69,13 +70,10 @@ public class ScoreManager : MonoBehaviourPunCallbacks, IOnEventCallback
         {
             Debug.Log("ScoreManager:OnEvent1");
             //m_result.gameObject.SetActive(true);
-            m_result.SetResult(m_playerAScore, m_playerBScore);
+            GameObject go = Instantiate(m_result, m_canvas);
+            go.GetComponent<Result>().SetResult(m_playerAScore, m_playerBScore);
             Debug.Log("ScoreManager:OnEvent2");
         }
     }
 
-    public void TestFunc(int a)
-    {
-        m_result.SetResult(a, a + 10);
-    }
 }
