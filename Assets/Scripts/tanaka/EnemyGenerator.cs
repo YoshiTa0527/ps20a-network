@@ -33,7 +33,6 @@ public class EnemyGenerator : MonoBehaviourPunCallbacks, IOnEventCallback
         {
             return;
         }
-        
     }
 
     void IOnEventCallback.OnEvent(EventData e)
