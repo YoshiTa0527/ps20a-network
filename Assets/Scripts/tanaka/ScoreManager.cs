@@ -61,18 +61,14 @@ public class ScoreManager : MonoBehaviourPunCallbacks, IOnEventCallback
         {
             m_playerBScore += score;
         }
-        Debug.Log($"PlayerA Score:{m_playerAScore}PlayerB Score:{m_playerBScore}");
     }
 
     void IOnEventCallback.OnEvent(EventData e)
     {
         if ((int)e.Code == 1)
         {
-            Debug.Log("ScoreManager:OnEvent1");
-            //m_result.gameObject.SetActive(true);
             GameObject go = Instantiate(m_result, m_canvas);
             go.GetComponent<Result>().SetResult(m_playerAScore, m_playerBScore);
-            Debug.Log("ScoreManager:OnEvent2");
         }
     }
 

@@ -8,10 +8,13 @@ public class Result : MonoBehaviour
     [SerializeField] Text m_winerText = default;
     [SerializeField] Text m_loserText = default;
 
+    /// <summary>
+    /// リザルトパネルに出すテキストを設定する
+    /// </summary>
+    /// <param name="playerAScore"></param>
+    /// <param name="playerBScore"></param>
     public void SetResult(int playerAScore, int playerBScore)
     {
-        Debug.Log("Result:Call");
-        this.gameObject.SetActive(true);
         if (playerAScore > playerBScore)
         {
             m_winerText.text = $"Winer!!:PlayerA\nScore:{playerAScore}";
