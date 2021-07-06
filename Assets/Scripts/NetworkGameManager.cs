@@ -7,7 +7,7 @@ using Photon.Realtime;
 
 public class NetworkGameManager : MonoBehaviourPunCallbacks // Photon Realtime 用のクラスを継承する
 {
-    [SerializeField] string m_lobbySceneName = "Lobby";
+    [SerializeField] string m_lobbySceneName = "LobbyCopied";
 
     /// <summary>プレイヤーのプレハブの名前</summary>
     [SerializeField] string m_playerPrefabName = "Prefab";
@@ -18,12 +18,12 @@ public class NetworkGameManager : MonoBehaviourPunCallbacks // Photon Realtime �
     /// <summary>
     /// プレイヤー名
     /// </summary>
-    public static string m_playerName;
+    public static string m_playerName = null;
 
     /// <summary>
     /// 部屋名
     /// </summary>
-    public static string m_roomName;
+    public static string m_roomName = null;
 
     private void Awake()
     {
@@ -68,7 +68,14 @@ public class NetworkGameManager : MonoBehaviourPunCallbacks // Photon Realtime �
     {
         if (PhotonNetwork.IsConnected)
         {
-            PhotonNetwork.JoinLobby();
+            if (string.IsNullOrEmpty(m_roomName))
+            {
+                PhotonNetwork.JoinLobby(new TypedLobby("public", LobbyType.Default));
+            }
+            else
+            {
+                PhotonNetwork.JoinLobby(new TypedLobby("private", LobbyType.Default));
+            }
         }
     }
 
@@ -236,6 +243,7 @@ public class NetworkGameManager : MonoBehaviourPunCallbacks // Photon Realtime �
     public override void OnJoinRandomFailed(short returnCode, string message)
     {
         Debug.Log("OnJoinRandomFailed: " + message);
+        CreateRandomRoom();
     }
 
     /// <summary>部屋から退室した時</summary>
