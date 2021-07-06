@@ -6,8 +6,6 @@ using UnityEngine.UI;
 public class LobbyManager : MonoBehaviour
 {
     [SerializeField]
-    private string gameSceneName;
-    [SerializeField]
     private InputField playerNameInput;
     [SerializeField]
     private InputField roomNameInput;
@@ -20,8 +18,8 @@ public class LobbyManager : MonoBehaviour
         NetworkGameManager.m_playerName = playerNameInput.text;
         NetworkGameManager.m_roomName = roomNameInput.text;
 
-        SceneLoader loder = new SceneLoader();
+        SceneLoader loader = new SceneLoader();
 
-        loder.LoadScene(gameSceneName);
+        loader.LoadScene(SceneType.Game);
     }
 }
