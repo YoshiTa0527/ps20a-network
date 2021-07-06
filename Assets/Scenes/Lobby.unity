@@ -290,7 +290,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 398eae8035f980343b71d469024e3d6c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameSceneName: AdjustmentScene
+  gameSceneName: Result
   playerNameInput: {fileID: 2145515973}
   roomNameInput: {fileID: 32048329}
 --- !u!4 &79898274
@@ -710,7 +710,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 835219756}
-  - component: {fileID: 835219755}
   m_Layer: 0
   m_Name: GameObject
   m_TagString: Untagged
@@ -718,21 +717,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &835219755
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 835219754}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fdb4a0ff21ae368449dfd83e311df7de, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_textA: {fileID: 0}
-  m_textB: {fileID: 0}
-  m_refleshInterval: 0.1
 --- !u!4 &835219756
 Transform:
   m_ObjectHideFlags: 0
