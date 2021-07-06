@@ -290,7 +290,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 398eae8035f980343b71d469024e3d6c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameSceneName: Tanaka
+  gameSceneName: AdjustmentScene
   playerNameInput: {fileID: 2145515973}
   roomNameInput: {fileID: 32048329}
 --- !u!4 &79898274
