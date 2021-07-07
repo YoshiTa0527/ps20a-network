@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class Result : MonoBehaviour
 {
-    [SerializeField] Text m_winerText = default;
+    [SerializeField] Text m_winnerText = default;
     [SerializeField] Text m_loserText = default;
 
     /// <summary>
@@ -17,12 +17,12 @@ public class Result : MonoBehaviour
     {
         if (playerAScore > playerBScore)
         {
-            m_winerText.text = $"Winer!!:PlayerA\nScore:{playerAScore}";
+            m_winnerText.text = $"Winner!!:PlayerA\nScore:{playerAScore}";
             m_loserText.text = $"Loser:PlayerB\nScore:{playerBScore}";
         }
         else if (playerAScore < playerBScore)
         {
-            m_winerText.text = $"Winer!!:PlayerB\nScore:{playerBScore}";
+            m_winnerText.text = $"Winner!!:PlayerB\nScore:{playerBScore}";
             m_loserText.text = $"Loser:PlayerA\nScore:{playerAScore}";
         }
     }

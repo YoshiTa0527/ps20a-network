@@ -115,7 +115,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0689d4bc01d70f3429c85a65ceb82f21, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_winerText: {fileID: 4985214461359853184}
+  m_winnerText: {fileID: 0}
   m_loserText: {fileID: 4985214461422609467}
 --- !u!1 &4985214461359853190
 GameObject:
@@ -129,7 +129,7 @@ GameObject:
   - component: {fileID: 4985214461359853185}
   - component: {fileID: 4985214461359853184}
   m_Layer: 5
-  m_Name: WinerText
+  m_Name: WinnerText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -194,7 +194,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: "Winer:player\n00000000000\u70B9"
+  m_Text: "Winner:player\n00000000000\u70B9"
 --- !u!1 &4985214461422609465
 GameObject:
   m_ObjectHideFlags: 0
