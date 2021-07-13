@@ -49,10 +49,8 @@ MonoBehaviour:
   m_masterSlider: {fileID: 0}
   m_bgmSlider: {fileID: 0}
   m_seSlider: {fileID: 0}
-  m_bgmData:
-  - {fileID: 8300000, guid: c0628beaf966a554a9e18287503ddfe5, type: 3}
-  m_seData:
-  - {fileID: 8300000, guid: e4f6154f8eae3ad4c8d8d24fa75a8287, type: 3}
+  m_bgmData: []
+  m_seData: []
 --- !u!114 &4208735919083707043
 MonoBehaviour:
   m_ObjectHideFlags: 0

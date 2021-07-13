@@ -104,6 +104,7 @@ public class SoundManager : SingletonMonoBehaviour<SoundManager>
         m_seVolume = m_seSlider.GetComponent<Slider>().value;
     }
 
+#if UNITY_EDITOR
     /// <summary>
     /// RPCテスト用
     /// </summary>
@@ -111,4 +112,5 @@ public class SoundManager : SingletonMonoBehaviour<SoundManager>
     {
         m_view.RPC("PlaySE", RpcTarget.All, 0);
     }
+#endif
 }
