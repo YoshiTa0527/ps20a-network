@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using Photon.Pun;
+using UnityEngine.SceneManagement;
 
 [RequireComponent(typeof(PhotonView))]
 public class SoundManager : SingletonMonoBehaviour<SoundManager>
@@ -43,7 +44,16 @@ public class SoundManager : SingletonMonoBehaviour<SoundManager>
             Destroy(gameObject);
             return;
         }
+        SceneManager.sceneLoaded += OnSceneLoaded;
         DontDestroyOnLoad(gameObject);
+    }
+
+    void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        m_bgmAudioSource = GameObject.Find("BGM_AudioSource").GetComponent<AudioSource>();
+        m_seAudioSource = GameObject.Find("SE_AudioSource").GetComponent<AudioSource>();
+        m_bgmAudioSource.volume = m_bgmVolume * m_masterVolume;
+        m_seAudioSource.volume = m_seVolume * m_masterVolume;
     }
 
     void Start()
