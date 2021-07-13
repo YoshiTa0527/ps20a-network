@@ -50,7 +50,7 @@ public class SoundManager : SingletonMonoBehaviour<SoundManager>
     {
         m_view = GetComponent<PhotonView>();
         m_bgmAudioSource = m_bgmAudioSource.GetComponent<AudioSource>();
-        m_bgmAudioSource = m_bgmAudioSource.GetComponent<AudioSource>();
+        m_seAudioSource = m_seAudioSource.GetComponent<AudioSource>();
     }
 
     void Update()
