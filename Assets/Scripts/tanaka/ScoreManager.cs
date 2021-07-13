@@ -44,7 +44,6 @@ public class ScoreManager : MonoBehaviourPunCallbacks, IOnEventCallback
     [PunRPC]
     void RefleshScoreList(int aScore, int bScore)
     {
-        Debug.Log("isCalled");
         m_playerAScore = aScore;
         m_playerBScore = bScore;
         m_textA.text = "PlayerA:" + m_playerAScore.ToString();
