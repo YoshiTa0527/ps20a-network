@@ -12,6 +12,7 @@ public class LimitTimeController : MonoBehaviourPunCallbacks, IOnEventCallback
     [SerializeField] private float limitTime = 10;
     [SerializeField] Text limitTimeText = default;
     private bool isGameStart = false;
+    public bool IsGameStart { private set { isGameStart = value; } get { return isGameStart; } }
     private bool isGameEnd = false;
     [SerializeField] private string messege = " ";
 
