@@ -12,6 +12,8 @@ public class NetworkGameManager : MonoBehaviourPunCallbacks // Photon Realtime �
     /// <summary>プレイヤーを生成する場所を示すアンカーのオブジェクト</summary>
     [SerializeField] Transform[] m_spawnPositions = default;
     private string messege = " ";
+    [SerializeField]
+    bool m_soloPlayMode = false;
 
     /// <summary>
     /// プレイヤー名
@@ -139,6 +141,12 @@ public class NetworkGameManager : MonoBehaviourPunCallbacks // Photon Realtime �
          * 現状のコードではユーザーが最大人数から減った際の追加入室を考慮していないため、追加入室させたい場合は実装を変更する必要がある。
          * **************************************************/
         if (actorNumber > PhotonNetwork.CurrentRoom.MaxPlayers - 1)
+        {
+            Debug.Log("Closing Room");
+            PhotonNetwork.CurrentRoom.IsOpen = false;
+            Raise();
+        }
+        else if (m_soloPlayMode)
         {
             Debug.Log("Closing Room");
             PhotonNetwork.CurrentRoom.IsOpen = false;
