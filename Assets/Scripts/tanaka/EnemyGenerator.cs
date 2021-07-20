@@ -22,13 +22,15 @@ public class EnemyGenerator : MonoBehaviourPunCallbacks, IOnEventCallback
     float m_generationTimeTimer = 0;
     /// <summary>タイムアップになったか</summary>
     bool m_isTimeUp = false;
+    /// <summary> ゲーム中かどうか　/// </summary>
+    bool m_isGameStarted = false;
 
     void Update()
     {
         // マスタークライアント側でのみ敵を生成する
         //最大人数までプレイヤーが入室したら敵を生成する
         if (!PhotonNetwork.IsMasterClient ||
-            PhotonNetwork.CurrentRoom.Players.Count < PhotonNetwork.CurrentRoom.MaxPlayers) 
+                !m_isGameStarted) 
             return;
 
         m_intervalTimer += Time.deltaTime;
@@ -66,6 +68,10 @@ public class EnemyGenerator : MonoBehaviourPunCallbacks, IOnEventCallback
         if ((int)e.Code == 1)
         {
             EnemyInstanceStop();
+        }
+        if ((int)e.Code == 0)
+        {
+            m_isGameStarted = true;
         }
     }
 
