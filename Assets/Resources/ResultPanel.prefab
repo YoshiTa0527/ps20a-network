@@ -115,7 +115,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0689d4bc01d70f3429c85a65ceb82f21, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_winnerText: {fileID: 0}
+  m_winnerText: {fileID: 4985214461359853184}
   m_loserText: {fileID: 4985214461422609467}
 --- !u!1 &4985214461359853190
 GameObject:
