@@ -1,19 +1,16 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI;
 using Photon.Pun;
-using UnityEngine.SceneManagement;
 
 [RequireComponent(typeof(PhotonView))]
 public class SoundManager : SingletonMonoBehaviour<SoundManager>
 {
     /// <summary>マスターボリューム</summary>
-    static float m_masterVolume = 1.0f;
+    float m_masterVolume = 1.0f;
     /// <summary>BGMボリューム</summary>
-    static float m_bgmVolume = 1.0f;
+    float m_bgmVolume = 1.0f;
     /// <summary>SEボリューム</summary>
-    static float m_seVolume = 1.0f;
+    float m_seVolume = 1.0f;
     /// <summary>PhotonView</summary>
     PhotonView m_view;
 
@@ -44,16 +41,7 @@ public class SoundManager : SingletonMonoBehaviour<SoundManager>
             Destroy(gameObject);
             return;
         }
-        SceneManager.sceneLoaded += OnSceneLoaded;
         DontDestroyOnLoad(gameObject);
-    }
-
-    void OnSceneLoaded(Scene scene, LoadSceneMode mode)
-    {
-        m_bgmAudioSource = GameObject.Find("BGM_AudioSource").GetComponent<AudioSource>();
-        m_seAudioSource = GameObject.Find("SE_AudioSource").GetComponent<AudioSource>();
-        m_bgmAudioSource.volume = m_bgmVolume * m_masterVolume;
-        m_seAudioSource.volume = m_seVolume * m_masterVolume;
     }
 
     void Start()
