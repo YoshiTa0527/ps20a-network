@@ -9,7 +9,15 @@ public class EnemyShootBullet : MonoBehaviour
     [SerializeField] string m_bulletResourceName = "PrefabResourceName";
     /// <summary>弾を撃つ間隔</summary>
     [SerializeField] float m_interval = 1f;
+    /// <summary>一度に撃つ弾の数</summary>
+    [SerializeField] int m_countAtOnce;
+    /// <summary>一度に撃つときの間隔</summary>
+    [SerializeField] float m_intervalAtOnce;
+    /// <summary> 銃身(これのup方向に弾を飛ばす) </summary>
+    [SerializeField] Transform m_barrel;
+
     float m_timer = 0f;
+    
 
     void Update()
     {
@@ -21,7 +29,16 @@ public class EnemyShootBullet : MonoBehaviour
         if (m_timer > m_interval)
         {
             m_timer = 0;
-            PhotonNetwork.Instantiate(m_bulletResourceName, this.transform.position, Quaternion.identity);
+            StartCoroutine(ShootBullets());
+        }
+    }
+
+    private IEnumerator ShootBullets()
+    {
+        for (int i = 0; i < m_countAtOnce; i++)
+        {
+            PhotonNetwork.Instantiate(m_bulletResourceName, this.transform.position, m_barrel ? m_barrel.rotation : Quaternion.identity);
+            yield return new WaitForSeconds(m_intervalAtOnce);
         }
     }
 }
