@@ -7,42 +7,25 @@ using Photon.Realtime;
 
 public class EnemySpawner : MonoBehaviour
 {
-    SpawnData data;
-
-    bool seted;
-    bool start;
-    int count;
+    [SerializeField]
+    float interval;
+    [SerializeField]
+    int amount;
+    [SerializeField]
+    string prefabName;
 
     float timer;
-    public void SetData(SpawnData data)
-    {
-        this.data = data;
-        seted = true;
-    }
+    int count;
 
     private void Update()
     {
-        if (!seted)
-        {
-            return;
-        }
-        if (!start)
-        {
-            if (data.Type == ESpawnDataType.Wait)
-            {
-                Destroy(this.gameObject);
-            }
-            start = true;
-            return;
-        }
-
         timer += Time.deltaTime;
-        if (timer >= data.SpawnInterval)
+        if (timer >= interval)
         {
-            timer -= data.SpawnInterval;
+            timer -= interval;
             count++;
-            PhotonNetwork.Instantiate(data.Obj, this.transform.position, Quaternion.identity);
-            if (count >= data.SpawnAmount)
+            PhotonNetwork.Instantiate(prefabName, this.transform.position, Quaternion.identity);
+            if (count >= amount)
             {
                 Destroy(this.gameObject);
             }
