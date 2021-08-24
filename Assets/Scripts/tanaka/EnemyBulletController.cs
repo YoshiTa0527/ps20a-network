@@ -7,8 +7,6 @@ public class EnemyBulletController : MonoBehaviour
 {
     /// <summary>弾が飛ぶ速さ</summary>
     [SerializeField] float m_speed;
-    /// <summary>弾が飛ぶ方向</summary>
-    [SerializeField] Vector2 m_direction = Vector2.up;
     /// <summary>弾の生存期間（秒）</summary>
     [SerializeField] float m_lifeTime = 1f;
     [SerializeField] string bulletmove;
@@ -23,7 +21,7 @@ public class EnemyBulletController : MonoBehaviour
         if (m_view && m_view.IsMine)    // 自分が生成したものだけ処理する
         {
             // 弾に初速を与える
-            m_rb.velocity = m_speed * m_direction;
+            m_rb.velocity = m_speed * transform.up;
         }
     }
 

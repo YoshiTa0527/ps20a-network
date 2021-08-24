@@ -7,13 +7,13 @@ using Photon.Realtime;
 
 public class NetworkGameManager : MonoBehaviourPunCallbacks // Photon Realtime 用のクラスを継承する
 {
-    [SerializeField] string m_lobbySceneName = "LobbyCopied";
-
     /// <summary>プレイヤーのプレハブの名前</summary>
     [SerializeField] string m_playerPrefabName = "Prefab";
     /// <summary>プレイヤーを生成する場所を示すアンカーのオブジェクト</summary>
     [SerializeField] Transform[] m_spawnPositions = default;
     private string messege = " ";
+    [SerializeField]
+    bool m_soloPlayMode = false;
 
     /// <summary>
     /// プレイヤー名
@@ -146,6 +146,12 @@ public class NetworkGameManager : MonoBehaviourPunCallbacks // Photon Realtime �
             PhotonNetwork.CurrentRoom.IsOpen = false;
             Raise();
         }
+        else if (m_soloPlayMode)
+        {
+            Debug.Log("Closing Room");
+            PhotonNetwork.CurrentRoom.IsOpen = false;
+            Raise();
+        }
     }
 
     void Raise()
@@ -217,7 +223,7 @@ public class NetworkGameManager : MonoBehaviourPunCallbacks // Photon Realtime �
         Debug.Log("OnCreateRoomFailed: " + message);
         //作成にも失敗した場合はロビーに戻る
         SceneLoader loader = new SceneLoader();
-        loader.LoadScene(m_lobbySceneName);
+        loader.LoadScene(SceneType.Lobby);
     }
 
     /// <summary>部屋に入室した時</summary>

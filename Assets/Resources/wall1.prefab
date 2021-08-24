@@ -13,7 +13,8 @@ GameObject:
   - component: {fileID: 1708032213157177990}
   - component: {fileID: 4939316637470389245}
   - component: {fileID: 7882722427305228021}
-  - component: {fileID: 5813639911153987331}
+  - component: {fileID: 8330961050159121139}
+  - component: {fileID: -3634981391006998052}
   m_Layer: 0
   m_Name: wall1
   m_TagString: Untagged
@@ -150,7 +151,28 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 10, y: 5}
   m_EdgeRadius: 0
---- !u!114 &5813639911153987331
+--- !u!50 &8330961050159121139
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6501790122477884890}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 100
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
+--- !u!114 &-3634981391006998052
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -162,6 +184,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 78429326066c9d640bf7ed013bbe2e2b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_moveSpeedX: -0.2
-  m_moveSpeedY: 0
+  m_moveSpeed: 5
+  m_moveDirection: {x: -1, y: 0}
   m_lifeTime: 10

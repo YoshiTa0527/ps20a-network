@@ -3,16 +3,21 @@ using System.Collections.Generic;
 using UnityEngine;
 using Photon.Pun;
 using UnityEngine.UI;
+using ExitGames.Client.Photon;
+using Photon.Realtime;
+
 /// <summary>
 /// クライアントそれぞれがスコアマネージャーを持つ
 /// スコアマネージャーはプレイヤーが入室したときにスコアテキストをそれぞれに与え、同期する
 /// </summary>
-public class ScoreManager : MonoBehaviour
+public class ScoreManager : MonoBehaviourPunCallbacks, IOnEventCallback
 {
     public static ScoreManager current;
     [SerializeField] Text m_textA = null;
     [SerializeField] Text m_textB = null;
     [SerializeField] float m_refleshInterval = 0.1f;
+    [SerializeField] GameObject m_result = default;
+    [SerializeField] Transform m_canvas;
     int m_playerAScore;
     int m_playerBScore;
     float m_refleshTimer;
@@ -39,7 +44,6 @@ public class ScoreManager : MonoBehaviour
     [PunRPC]
     void RefleshScoreList(int aScore, int bScore)
     {
-        Debug.Log("isCalled");
         m_playerAScore = aScore;
         m_playerBScore = bScore;
         m_textA.text = "PlayerA:" + m_playerAScore.ToString();
@@ -56,6 +60,15 @@ public class ScoreManager : MonoBehaviour
         {
             m_playerBScore += score;
         }
-        Debug.Log($"PlayerA Score:{m_playerAScore}PlayerB Score:{m_playerBScore}");
     }
+
+    void IOnEventCallback.OnEvent(EventData e)
+    {
+        if ((int)e.Code == 1)
+        {
+            GameObject go = Instantiate(m_result, m_canvas);
+            go.GetComponent<Result>().SetResult(m_playerAScore, m_playerBScore);
+        }
+    }
+
 }

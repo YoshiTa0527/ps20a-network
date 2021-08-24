@@ -4,7 +4,6 @@ using Photon.Pun;
 using Photon.Realtime;
 using ExitGames.Client.Photon;
 
-
 /// <summary>
 /// 敵を生成するコンポーネント
 /// </summary>
@@ -14,20 +13,48 @@ public class EnemyGenerator : MonoBehaviourPunCallbacks, IOnEventCallback
     [SerializeField] string m_enemyResourceName = "PrefabResourceName";
     /// <summary>敵を生成する間隔（秒）</summary>
     [SerializeField] float m_interval = 1f;
-    float m_timer = 0f;
-    bool isTimeUp = false;
+    float m_intervalTimer = 0f;
+    /// <summary>敵の生成を停止する時間（秒）</summary>
+    [SerializeField] float m_restTime = 3f;
+    float m_restTimeTimer = 0;
+    /// <summary>敵を生成し続ける時間（秒）</summary>
+    [SerializeField] float m_generationTime = 10f;
+    float m_generationTimeTimer = 0;
+    /// <summary>タイムアップになったか</summary>
+    bool m_isTimeUp = false;
+    /// <summary> ゲーム中かどうか　/// </summary>
+    bool m_isGameStarted = false;
 
     void Update()
     {
         // マスタークライアント側でのみ敵を生成する
-        if (!PhotonNetwork.InRoom || !PhotonNetwork.IsMasterClient) return;
-        
-        m_timer += Time.deltaTime;
+        //最大人数までプレイヤーが入室したら敵を生成する
+        if (!PhotonNetwork.IsMasterClient ||
+                !m_isGameStarted) 
+            return;
 
-        if (m_timer > m_interval && isTimeUp == false)
+        m_intervalTimer += Time.deltaTime;
+        m_generationTimeTimer += Time.deltaTime;
+
+        if (m_intervalTimer > m_interval && m_isTimeUp == false)
         {
-            m_timer = 0;
-            PhotonNetwork.Instantiate(m_enemyResourceName, this.transform.position, Quaternion.identity);
+            //設定した生成し続ける時間だけ敵を生成する
+            if (m_generationTimeTimer <= m_generationTime)
+            {
+                m_intervalTimer = 0;
+                PhotonNetwork.Instantiate(m_enemyResourceName, this.transform.position, Quaternion.identity);
+            }
+            else
+            {
+                m_restTimeTimer += Time.deltaTime;
+
+                //設定した停止時間まで経過したら生成し始める
+                if (m_restTimeTimer > m_restTime)
+                {
+                    m_generationTimeTimer = 0;
+                    m_restTimeTimer = 0;
+                }
+            }
         }
         else
         {
@@ -42,10 +69,14 @@ public class EnemyGenerator : MonoBehaviourPunCallbacks, IOnEventCallback
         {
             EnemyInstanceStop();
         }
+        if ((int)e.Code == 0)
+        {
+            m_isGameStarted = true;
+        }
     }
 
     void EnemyInstanceStop()
     {
-        isTimeUp = true;
+        m_isTimeUp = true;
     }
 }
