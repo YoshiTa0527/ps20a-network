@@ -9,21 +9,15 @@ using ExitGames.Client.Photon;
 /// </summary>
 public class EnemyGenerator : MonoBehaviourPunCallbacks, IOnEventCallback
 {
-    /// <summary>敵として生成するプレハブの名前</summary>
-    [SerializeField] string m_enemyResourceName = "PrefabResourceName";
-    /// <summary>敵を生成する間隔（秒）</summary>
-    [SerializeField] float m_interval = 1f;
-    float m_intervalTimer = 0f;
-    /// <summary>敵の生成を停止する時間（秒）</summary>
-    [SerializeField] float m_restTime = 3f;
-    float m_restTimeTimer = 0;
-    /// <summary>敵を生成し続ける時間（秒）</summary>
-    [SerializeField] float m_generationTime = 10f;
-    float m_generationTimeTimer = 0;
+    [SerializeField]
+    EnemySpawnData spwawnData;
     /// <summary>タイムアップになったか</summary>
     bool m_isTimeUp = false;
     /// <summary> ゲーム中かどうか　/// </summary>
     bool m_isGameStarted = false;
+
+    float intervalTime;
+    float timer;
 
     void Update()
     {
@@ -33,28 +27,19 @@ public class EnemyGenerator : MonoBehaviourPunCallbacks, IOnEventCallback
                 !m_isGameStarted) 
             return;
 
-        m_intervalTimer += Time.deltaTime;
-        m_generationTimeTimer += Time.deltaTime;
+        timer += Time.deltaTime;
 
-        if (m_intervalTimer > m_interval && m_isTimeUp == false)
+        if (timer > intervalTime && !m_isTimeUp)
         {
-            //設定した生成し続ける時間だけ敵を生成する
-            if (m_generationTimeTimer <= m_generationTime)
-            {
-                m_intervalTimer = 0;
-                PhotonNetwork.Instantiate(m_enemyResourceName, this.transform.position, Quaternion.identity);
-            }
-            else
-            {
-                m_restTimeTimer += Time.deltaTime;
-
-                //設定した停止時間まで経過したら生成し始める
-                if (m_restTimeTimer > m_restTime)
-                {
-                    m_generationTimeTimer = 0;
-                    m_restTimeTimer = 0;
-                }
-            }
+            //タイマーリセット
+            timer = 0;
+            //敵選定
+            EnemySpwanPrefab prefab = spwawnData.Data[Random.Range(0, spwawnData.Data.Count)];
+            //プレハブ生成
+            Transform enemyTransform = Instantiate(prefab).transform;
+            enemyTransform.position = this.transform.position;
+            //インターバル設定
+            intervalTime = prefab.Interval;
         }
         else
         {
