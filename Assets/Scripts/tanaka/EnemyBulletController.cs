@@ -11,6 +11,7 @@ public class EnemyBulletController : MonoBehaviour
     [SerializeField] Vector2 m_direction = Vector2.up;
     /// <summary>弾の生存期間（秒）</summary>
     [SerializeField] float m_lifeTime = 1f;
+    [SerializeField] string bulletmove;
     PhotonView m_view = null;
     Rigidbody2D m_rb = null;
     float m_timer;
@@ -19,7 +20,6 @@ public class EnemyBulletController : MonoBehaviour
     {
         m_rb = GetComponent<Rigidbody2D>();
         m_view = GetComponent<PhotonView>();
-
         if (m_view && m_view.IsMine)    // 自分が生成したものだけ処理する
         {
             // 弾に初速を与える
