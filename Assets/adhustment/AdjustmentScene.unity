@@ -469,7 +469,7 @@ MonoBehaviour:
   m_spawnPositions:
   - {fileID: 922636585}
   - {fileID: 973119565}
-  m_soloPlayMode: 0
+  m_soloPlayMode: 1
 --- !u!4 &337689364
 Transform:
   m_ObjectHideFlags: 0
