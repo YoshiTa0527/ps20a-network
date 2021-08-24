@@ -9,11 +9,13 @@ public class ScrollBackGround : MonoBehaviour
     [SerializeField] GameObject m_otherEndPosition;
     Vector3 m_startPos;
     Vector3 m_camelaRectMin;
-
+    [SerializeField] SpriteRenderer m_backGround;
+    SpriteRenderer m_backGroundClone;
     [SerializeField] float m_spd = 5f;
     private void Start()
     {
-        m_camelaRectMin = Camera.main.ViewportToWorldPoint(new Vector3(0, 0, Camera.main.transform.position.z));
+        m_backGroundClone = Instantiate(m_backGround);
+        m_backGroundClone.transform.Translate(0f, m_backGround.bounds.size.y, 0f);
     }
     private void Update()
     {
