@@ -8,20 +8,21 @@ public class ScrollBackGround : MonoBehaviour
     [SerializeField] GameObject m_endPosition;
     [SerializeField] GameObject m_otherEndPosition;
     Vector3 m_startPos;
+    Vector3 m_camelaRectMin;
 
     [SerializeField] float m_spd = 5f;
     private void Start()
     {
-        m_startPos = m_startPosition.transform.position;
+        m_camelaRectMin = Camera.main.ViewportToWorldPoint(new Vector3(0, 0, Camera.main.transform.position.z));
     }
     private void Update()
     {
-        if (Vector3.Distance(m_startPosition.transform.position, m_endPosition.transform.position) == 0)
-        {
-            this.transform.position = m_otherEndPosition.transform.position;
-        }
 
-        this.transform.position += Vector3.left / m_spd;
+        this.transform.Translate(Vector2.left * m_spd * Time.deltaTime);
+        if (transform.position.x < (m_camelaRectMin.x - Camera.main.transform.position.x) * 2)
+        {
+            transform.position = new Vector2((Camera.main.transform.position.x - m_camelaRectMin.x) * 2, transform.position.y);
+        }
 
     }
 }
