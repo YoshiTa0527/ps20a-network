@@ -21,7 +21,8 @@ public class EnemySettingMove : EnemyController
         
         if (m_timer > m_nextMoveTime)
         {
-            Move(m_nextMoveDirection);
+            m_moveDirection = m_nextMoveDirection;
+            Move();
         }
     }
 }

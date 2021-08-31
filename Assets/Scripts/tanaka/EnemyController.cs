@@ -51,11 +51,6 @@ public class EnemyController : MonoBehaviourPunCallbacks, IOnEventCallback
         m_rb.velocity = m_moveDirection.normalized * m_moveSpeed;
     }
 
-    protected virtual void Move(Vector2 vector2)
-    {
-        m_rb.velocity = vector2 * m_moveSpeed;
-    }
-
     void OnTriggerEnter2D(Collider2D collision)
     {
         if (m_view && m_view.IsMine)      // 自分が生成したものだけ処理する
