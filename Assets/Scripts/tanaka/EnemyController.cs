@@ -33,7 +33,7 @@ public class EnemyController : MonoBehaviourPunCallbacks, IOnEventCallback
     protected virtual void Update()
     {
         if (!m_view || !m_view.IsMine) return;      // 自分が生成したものだけ処理する
-        
+
         Move();
         m_timer += Time.deltaTime;
 
@@ -58,6 +58,11 @@ public class EnemyController : MonoBehaviourPunCallbacks, IOnEventCallback
             if (collision.CompareTag("Bullet") ||
                 collision.CompareTag("Player"))
             {
+                //プレイヤーが無敵状態だったら無視する
+                SpaceShipController spaceShipController = collision.GetComponent<SpaceShipController>();
+                if (spaceShipController != null && spaceShipController.IsInvincible)
+                    return;
+
                 if (!m_isDeath)
                 {
                     if (!PhotonNetwork.InRoom || !PhotonNetwork.IsMasterClient)
