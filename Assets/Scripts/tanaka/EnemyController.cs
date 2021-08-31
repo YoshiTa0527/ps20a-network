@@ -17,7 +17,7 @@ public class EnemyController : MonoBehaviourPunCallbacks, IOnEventCallback
     /// <summary>生存期間（秒）</summary>
     [SerializeField] protected float m_lifeTime = 10f;
     /// <summary>経過時間 </summary>
-    float m_timer = 0f;
+    protected float m_timer = 0f;
     /// <summary>死んだか </summary>
     bool m_isDeath = false;
 
@@ -30,7 +30,7 @@ public class EnemyController : MonoBehaviourPunCallbacks, IOnEventCallback
         m_view = GetComponent<PhotonView>();
     }
 
-    void Update()
+    protected virtual void Update()
     {
         if (!m_view || !m_view.IsMine) return;      // 自分が生成したものだけ処理する
         
@@ -49,6 +49,11 @@ public class EnemyController : MonoBehaviourPunCallbacks, IOnEventCallback
     protected virtual void Move()
     {
         m_rb.velocity = m_moveDirection.normalized * m_moveSpeed;
+    }
+
+    protected virtual void Move(Vector2 vector2)
+    {
+        m_rb.velocity = vector2 * m_moveSpeed;
     }
 
     void OnTriggerEnter2D(Collider2D collision)
