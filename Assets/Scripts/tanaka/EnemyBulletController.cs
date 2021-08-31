@@ -6,13 +6,12 @@ using Photon.Pun;
 public class EnemyBulletController : MonoBehaviour
 {
     /// <summary>弾が飛ぶ速さ</summary>
-    [SerializeField] protected float m_speed;
+    [SerializeField] float m_speed;
     /// <summary>弾の生存期間（秒）</summary>
-    [SerializeField] protected float m_lifeTime = 1f;
-    [SerializeField] protected string bulletmove;
-    protected PhotonView m_view = null;
-    protected Rigidbody2D m_rb = null;
-    protected float m_timer;
+    [SerializeField] float m_lifeTime = 1f;
+    PhotonView m_view = null;
+    Rigidbody2D m_rb = null;
+    float m_timer;
 
     void Start()
     {
