@@ -120,6 +120,8 @@ public class SpaceShipController : MonoBehaviour
     void Fire()
     {
         PhotonNetwork.Instantiate(m_bulletResourceName, m_muzzle.position, m_muzzle.rotation);
+        //サウンド
+        SoundManager.Instance?.PlaySE(0);
     }
 
     /// <summary>
@@ -150,6 +152,8 @@ public class SpaceShipController : MonoBehaviour
         m_rb.AddForce(dir * dashPower, ForceMode2D.Impulse);
         isDashing = true;
         cantMove = true;
+        //サウンド
+        SoundManager.Instance?.PlaySE(1);
     }
 
     /// <summary>
@@ -229,6 +233,8 @@ public class SpaceShipController : MonoBehaviour
             {
                 other.Pushed(m_rb.velocity * pushPower);
                 Debug.Log("プッシュ！！");
+                //サウンド
+                SoundManager.Instance?.PlaySE(3);
             }
         }
     }
@@ -245,6 +251,8 @@ public class SpaceShipController : MonoBehaviour
                 OnInvivcible();
             }
             Debug.Log("無敵状態に入りました");
+            //サウンド
+            SoundManager.Instance?.PlaySE(3);
         }
     }
 }
