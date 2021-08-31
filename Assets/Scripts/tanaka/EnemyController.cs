@@ -19,12 +19,12 @@ public class EnemyController : MonoBehaviourPunCallbacks, IOnEventCallback
     /// <summary>経過時間 </summary>
     float m_timer = 0f;
     /// <summary>死んだか </summary>
-    bool isDeath = false;
+    bool m_isDeath = false;
 
-    Rigidbody2D m_rb = null;
+    protected Rigidbody2D m_rb = null;
     PhotonView m_view = null;
 
-    void Start()
+    protected virtual void Start()
     {
         m_rb = GetComponent<Rigidbody2D>();
         m_view = GetComponent<PhotonView>();
@@ -37,7 +37,7 @@ public class EnemyController : MonoBehaviourPunCallbacks, IOnEventCallback
         Move();
         m_timer += Time.deltaTime;
 
-        if (m_timer > m_lifeTime || isDeath)
+        if (m_timer > m_lifeTime || m_isDeath)
         {
             PhotonNetwork.Destroy(this.gameObject);
         }
@@ -58,7 +58,7 @@ public class EnemyController : MonoBehaviourPunCallbacks, IOnEventCallback
             if (collision.CompareTag("Bullet") ||
                 collision.CompareTag("Player"))
             {
-                if (!isDeath)
+                if (!m_isDeath)
                 {
                     if (!PhotonNetwork.InRoom || !PhotonNetwork.IsMasterClient)
                     {
@@ -66,7 +66,7 @@ public class EnemyController : MonoBehaviourPunCallbacks, IOnEventCallback
                         Debug.Log("弾が当たった");
                         return;
                     }
-                    isDeath = true;
+                    m_isDeath = true;
                     Debug.Log("弾が当たった");
                 }
             }
@@ -86,7 +86,7 @@ public class EnemyController : MonoBehaviourPunCallbacks, IOnEventCallback
     /// </summary>
     void EnemyDestroy()
     {
-        isDeath = true;
+        m_isDeath = true;
     }
 
     /// <summary>
