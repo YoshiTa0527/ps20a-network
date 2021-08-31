@@ -64,6 +64,10 @@ public class SpaceShipController : MonoBehaviour
     /// </summary>
     private bool m_isInvincible = false;
     /// <summary>
+    /// 無敵状態か [true: 無敵 / false:通常]
+    /// </summary>
+    public bool IsInvincible { get { return m_isInvincible; } }
+    /// <summary>
     /// 移動以外の行動が不能な状態か
     /// [true: 不能状態である / false: 不能状態でない]
     /// </summary>
@@ -241,16 +245,13 @@ public class SpaceShipController : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        if (m_isInvincible) return;
+
         //敵、敵の弾にぶつかったら無敵になる
         if (collision.gameObject.CompareTag("EnemyBullet") ||
             collision.gameObject.CompareTag("Enemy"))
         {
-            //無敵状態じゃなかったら
-            if (!m_isInvincible)
-            {
-                OnInvivcible();
-            }
-            Debug.Log("無敵状態に入りました");
+            OnInvivcible();
             //サウンド
             SoundManager.Instance?.PlaySE(3);
         }

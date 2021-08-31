@@ -42,6 +42,11 @@ public class EnemyBulletController : MonoBehaviour
         // プレイヤーにぶつかったら弾を消す
         if (collision.gameObject.CompareTag("Player"))
         {
+            //プレイヤーが無敵状態だったら無視する
+            SpaceShipController spaceShipController = collision.GetComponent<SpaceShipController>();
+            if (spaceShipController != null && spaceShipController.IsInvincible)
+                return;
+
             if (m_view && m_view.IsMine)    // 自分が生成したものだけ処理する
             {
                 PhotonNetwork.Destroy(this.gameObject);
