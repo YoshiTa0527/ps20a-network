@@ -89,5 +89,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   interval: 1
-  amount: 10
+  amount: 5
   prefabName: Enemy/Enemy
