@@ -17,8 +17,9 @@ GameObject:
   - component: {fileID: 208481245851931623}
   - component: {fileID: 7067827690323966516}
   - component: {fileID: -6680152046416526}
+  - component: {fileID: 480127373781253711}
   m_Layer: 0
-  m_Name: EightTwoWayEnemy 1
+  m_Name: EightTwoWayEnemy
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -221,6 +222,25 @@ MonoBehaviour:
   m_moveDirection: {x: -1, y: 0}
   m_lifeTime: 10
   m_variation: 2
+--- !u!95 &480127373781253711
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 413033244133181892}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: a63be55205abda04d8333c83800e0ae5, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &4959714734449002588
 GameObject:
   m_ObjectHideFlags: 0
