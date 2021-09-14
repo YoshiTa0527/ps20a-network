@@ -18,7 +18,7 @@ GameObject:
   - component: {fileID: 7067827690323966516}
   - component: {fileID: 9196177586378879898}
   m_Layer: 0
-  m_Name: EightTwoWayEnemy 2
+  m_Name: SettingTwoWayEnemy
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -201,7 +201,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_bulletResourceName: Enemy/EnemyBullet
-  m_interval: 5
+  m_interval: 3
   m_countAtOnce: 3
   m_intervalAtOnce: 0.3
   m_barrel: {fileID: 5237087878422557034}
@@ -217,10 +217,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8c0553a0370a4d8498bb8853a87b0109, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_moveSpeed: 1
+  m_moveSpeed: 15
   m_moveDirection: {x: -1, y: 0}
   m_lifeTime: 10
-  m_nextMoveDirection: {x: 0, y: 1}
+  m_nextMoveDirection: {x: 0, y: 0.5}
   m_nextMoveTime: 3
 --- !u!1 &4959714734449002588
 GameObject:
