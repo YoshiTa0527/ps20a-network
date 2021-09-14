@@ -13,5 +13,4 @@ MonoBehaviour:
   m_Name: EnemySpawnData
   m_EditorClassIdentifier: 
   data:
-  - {fileID: 1497909770048305538, guid: 21fc973525148374f9fe9c64a99b052b, type: 3}
-  - {fileID: 8175777327393952516, guid: 34e693c282e6ab641bbc0be0daf31145, type: 3}
+  - {fileID: 7765904936222752607, guid: 1a2e2ef66866eef40a57b703f4dbc11b, type: 3}

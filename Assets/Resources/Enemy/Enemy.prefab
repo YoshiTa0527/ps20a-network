@@ -17,9 +17,8 @@ GameObject:
   - component: {fileID: 413033244133181891}
   - component: {fileID: 208481245851931623}
   - component: {fileID: 2756480610814840150}
-  - component: {fileID: 7067827690323966516}
   m_Layer: 0
-  m_Name: TwoWayEnemy
+  m_Name: Enemy
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -211,29 +210,12 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 413033244133181892}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 20f87b16c10cace47afab43007306bb5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_bulletResourceName: EnemyBullet
-  m_interval: 5
-  m_countAtOnce: 3
-  m_intervalAtOnce: 0.3
-  m_barrel: {fileID: 5237087878422557034}
---- !u!114 &7067827690323966516
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 413033244133181892}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bac2f296061631f46b97da04cd1c4e2d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_bulletResourceName: EnemyBullet
+  m_bulletResourceName: Enemy/EnemyBullet
   m_interval: 5
   m_countAtOnce: 3
   m_intervalAtOnce: 0.3
