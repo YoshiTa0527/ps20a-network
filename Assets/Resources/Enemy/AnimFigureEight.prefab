@@ -15,7 +15,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &11428348504677711
 Transform:
   m_ObjectHideFlags: 0
@@ -48,6 +48,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: EnemyAnimFigureEight
       objectReference: {fileID: 0}
+    - target: {fileID: 4210638804530533868, guid: 863b6f40e4ce8354b9b512b69535e8f1,
+        type: 3}
+      propertyPath: m_SpriteTilingProperty.oldSize.x
+      value: 46.666668
+      objectReference: {fileID: 0}
+    - target: {fileID: 4210638804530533868, guid: 863b6f40e4ce8354b9b512b69535e8f1,
+        type: 3}
+      propertyPath: m_SpriteTilingProperty.oldSize.y
+      value: 24.333334
+      objectReference: {fileID: 0}
     - target: {fileID: 4210638804530533869, guid: 863b6f40e4ce8354b9b512b69535e8f1,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -61,7 +71,7 @@ PrefabInstance:
     - target: {fileID: 4210638804530533869, guid: 863b6f40e4ce8354b9b512b69535e8f1,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 312.78125
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4210638804530533869, guid: 863b6f40e4ce8354b9b512b69535e8f1,
         type: 3}
@@ -103,6 +113,12 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4210638804530533870, guid: 863b6f40e4ce8354b9b512b69535e8f1,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: a7774aa6c9f7ea84b91f0ae92cfaf9a1,
+        type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 863b6f40e4ce8354b9b512b69535e8f1, type: 3}
 --- !u!4 &4199513927362569684 stripped

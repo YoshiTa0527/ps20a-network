@@ -13,11 +13,11 @@ GameObject:
   - component: {fileID: 1310916077537968197}
   - component: {fileID: 1310916077537968196}
   - component: {fileID: 1310916077537968199}
-  - component: {fileID: 1310916077537968193}
   - component: {fileID: 1544312599952644709}
   - component: {fileID: 3587908978582832340}
   - component: {fileID: 1696217371583124490}
   - component: {fileID: 1696217371583124489}
+  - component: {fileID: 9206395412408248016}
   m_Layer: 0
   m_Name: EnemyAnimMove
   m_TagString: Enemy
@@ -34,7 +34,7 @@ Transform:
   m_GameObject: {fileID: 1310916077537968198}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 21.1, y: -4.2, z: 0}
-  m_LocalScale: {x: 2, y: 2, z: 1}
+  m_LocalScale: {x: 0.125, y: 0.125, z: 1}
   m_Children:
   - {fileID: 6856716257499216104}
   m_Father: {fileID: 0}
@@ -79,8 +79,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 1adb122e30c69bd46b4612e5609c4f80, type: 3}
-  m_Color: {r: 1, g: 1, b: 0, a: 1}
+  m_Sprite: {fileID: 21300000, guid: 4c6cc1600759ba5489438ec2b3bbca80, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -150,32 +150,6 @@ MonoBehaviour:
   m_SynchronizeAngularVelocity: 0
   m_TeleportEnabled: 0
   m_TeleportIfDistanceGreaterThan: 3
---- !u!61 &1310916077537968193
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1310916077537968198}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1, y: 1}
-    newSize: {x: 1, y: 1}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1}
-  m_EdgeRadius: 0
 --- !u!114 &1544312599952644709
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -241,6 +215,32 @@ MonoBehaviour:
   m_moveDirection: {x: -1, y: 0}
   m_lifeTime: 30
   m_variation: 0
+--- !u!61 &9206395412408248016
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1310916077537968198}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 49, y: 36.666668}
+    newSize: {x: 1, y: 1}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 49, y: 36.666668}
+  m_EdgeRadius: 0
 --- !u!1 &6007343354908049886
 GameObject:
   m_ObjectHideFlags: 0
