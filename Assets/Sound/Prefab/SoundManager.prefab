@@ -52,7 +52,11 @@ MonoBehaviour:
   m_bgmSlider: {fileID: 0}
   m_seSlider: {fileID: 0}
   m_bgmData: []
-  m_seData: []
+  m_seData:
+  - {fileID: 8300000, guid: 2cf1359de08cd324e86efbc8fef609a0, type: 3}
+  - {fileID: 8300000, guid: 72cbfc5c313ed5344b577aa188570d04, type: 3}
+  - {fileID: 8300000, guid: 1a803137a7ff79c4587af2c3483efcdf, type: 3}
+  - {fileID: 8300000, guid: 6a90220bca2183549bab6e150314be7e, type: 3}
 --- !u!114 &4208735919083707043
 MonoBehaviour:
   m_ObjectHideFlags: 0

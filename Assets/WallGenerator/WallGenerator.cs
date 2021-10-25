@@ -32,6 +32,16 @@ public class WallGenerator : MonoBehaviourPunCallbacks, IOnEventCallback
     /// </summary>
     bool m_generatorFlag = false;
 
+    /// <summary>
+    /// ランダムの最小値
+    /// </summary>
+    [SerializeField] float m_intervalMinRange = 2f;
+
+    /// <summary>
+    /// ランダムの最大値
+    /// </summary>
+    [SerializeField] float m_intervalMaxRange = 5f;
+
     void Update()
     {
         if (!PhotonNetwork.InRoom || !PhotonNetwork.IsMasterClient) return;
@@ -51,6 +61,7 @@ public class WallGenerator : MonoBehaviourPunCallbacks, IOnEventCallback
                 PhotonNetwork.Instantiate(m_walls[m_indexNum], this.transform.position, Quaternion.identity);
 
                 m_indexNum++;
+                m_interval = Random.Range(m_intervalMinRange, m_intervalMaxRange);
             }
         }
     }

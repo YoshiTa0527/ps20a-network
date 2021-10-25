@@ -6,15 +6,15 @@ using Photon.Pun;
 public class EnemyShootBullet : MonoBehaviour
 {
     /// <summary>弾のPrefab</summary>
-    [SerializeField] string m_bulletResourceName = "PrefabResourceName";
+    [SerializeField] protected string m_bulletResourceName = "PrefabResourceName";
     /// <summary>弾を撃つ間隔</summary>
-    [SerializeField] float m_interval = 1f;
+    [SerializeField] protected float m_interval = 1f;
     /// <summary>一度に撃つ弾の数</summary>
-    [SerializeField] int m_countAtOnce;
+    [SerializeField] protected int m_countAtOnce;
     /// <summary>一度に撃つときの間隔</summary>
-    [SerializeField] float m_intervalAtOnce;
+    [SerializeField] protected float m_intervalAtOnce;
     /// <summary> 銃身(これのup方向に弾を飛ばす) </summary>
-    [SerializeField] Transform m_barrel;
+    [SerializeField] protected Transform m_barrel;
 
     float m_timer = 0f;
     

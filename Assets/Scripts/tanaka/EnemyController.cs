@@ -17,7 +17,7 @@ public class EnemyController : MonoBehaviourPunCallbacks, IOnEventCallback
     /// <summary>生存期間（秒）</summary>
     [SerializeField] protected float m_lifeTime = 10f;
     /// <summary>経過時間 </summary>
-    float m_timer = 0f;
+    protected float m_timer = 0f;
     /// <summary>死んだか </summary>
     bool m_isDeath = false;
 
@@ -30,10 +30,10 @@ public class EnemyController : MonoBehaviourPunCallbacks, IOnEventCallback
         m_view = GetComponent<PhotonView>();
     }
 
-    void Update()
+    protected virtual void Update()
     {
         if (!m_view || !m_view.IsMine) return;      // 自分が生成したものだけ処理する
-        
+
         Move();
         m_timer += Time.deltaTime;
 
@@ -58,6 +58,11 @@ public class EnemyController : MonoBehaviourPunCallbacks, IOnEventCallback
             if (collision.CompareTag("Bullet") ||
                 collision.CompareTag("Player"))
             {
+                //プレイヤーが無敵状態だったら無視する
+                SpaceShipController spaceShipController = collision.GetComponent<SpaceShipController>();
+                if (spaceShipController != null && spaceShipController.IsInvincible)
+                    return;
+
                 if (!m_isDeath)
                 {
                     if (!PhotonNetwork.InRoom || !PhotonNetwork.IsMasterClient)
