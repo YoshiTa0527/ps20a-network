@@ -236,6 +236,7 @@ public class SpaceShipController : MonoBehaviour
             if (other)
             {
                 other.Pushed(m_rb.velocity * pushPower);
+                m_rb.velocity = Vector2.zero;
                 Debug.Log("プッシュ！！");
                 //サウンド
                 SoundManager.Instance?.PlaySE(3);
