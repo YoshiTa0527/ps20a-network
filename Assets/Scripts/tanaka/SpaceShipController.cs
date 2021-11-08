@@ -236,7 +236,9 @@ public class SpaceShipController : MonoBehaviour
             if (other)
             {
                 other.Pushed(m_rb.velocity * pushPower);
-                m_rb.velocity = Vector2.zero;
+                Vector2 reflect = collision.contacts[0].normal;
+                reflect *= Vector2.Dot(reflect, m_rb.velocity);
+                m_rb.velocity += collision.contacts[0].normal * reflect * -2;
                 Debug.Log("プッシュ！！");
                 //サウンド
                 SoundManager.Instance?.PlaySE(3);
