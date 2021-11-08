@@ -178,6 +178,7 @@ public class SpaceShipController : MonoBehaviour
     void SyncPushed(Vector2 power)
     {
         m_rb.AddForce(power, ForceMode2D.Impulse);
+        Debug.Log("押されたよ");
         cantMove = true;
     }
 
@@ -235,7 +236,9 @@ public class SpaceShipController : MonoBehaviour
             SpaceShipController other = collision.gameObject.GetComponent<SpaceShipController>();
             if (other)
             {
-                other.Pushed(m_rb.velocity * pushPower);
+                other.Pushed(-collision.relativeVelocity);
+                Vector2 reflect = collision.relativeVelocity * 0.5f;
+                m_rb.velocity = reflect;
                 Debug.Log("プッシュ！！");
                 //サウンド
                 SoundManager.Instance?.PlaySE(3);
