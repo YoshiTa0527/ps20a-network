@@ -366,6 +366,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e23d14be52e2db042aacc5d6941d8dbf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_isRandomInterval: 0
+  m_isRandomGenerator: 0
   m_walls:
   - wall1
   m_interval: 2
@@ -1293,7 +1295,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1011676662
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1750,6 +1752,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e23d14be52e2db042aacc5d6941d8dbf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_isRandomInterval: 0
+  m_isRandomGenerator: 0
   m_walls:
   - wall
   m_interval: 2
