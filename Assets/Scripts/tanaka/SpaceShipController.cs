@@ -236,9 +236,9 @@ public class SpaceShipController : MonoBehaviour
             SpaceShipController other = collision.gameObject.GetComponent<SpaceShipController>();
             if (other)
             {
-                other.Pushed(-collision.relativeVelocity * pushPower);
-                Vector2 reflect = collision.relativeVelocity;
-                m_rb.velocity += reflect * 2;
+                other.Pushed(-collision.relativeVelocity);
+                Vector2 reflect = collision.relativeVelocity * 0.5f;
+                m_rb.velocity = reflect;
                 Debug.Log("プッシュ！！");
                 //サウンド
                 SoundManager.Instance?.PlaySE(3);
