@@ -479,6 +479,8 @@ MonoBehaviour:
   m_spawnPositions:
   - {fileID: 922636585}
   - {fileID: 973119565}
+  m_player1Sprite: {fileID: 21300000, guid: 8ac58f14c22722c4882df2400e0834dc, type: 3}
+  m_player2Sprite: {fileID: 21300000, guid: b84e5638a704ffc45a1fb13a3725237c, type: 3}
   m_soloPlayMode: 0
 --- !u!4 &337689364
 Transform:
