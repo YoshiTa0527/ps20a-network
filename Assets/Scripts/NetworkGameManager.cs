@@ -11,10 +11,6 @@ public class NetworkGameManager : MonoBehaviourPunCallbacks // Photon Realtime �
     [SerializeField] string m_playerPrefabName = "Prefab";
     /// <summary>プレイヤーを生成する場所を示すアンカーのオブジェクト</summary>
     [SerializeField] Transform[] m_spawnPositions = default;
-    /// <summary>プレイヤー1のSprite </summary>
-    [SerializeField] Sprite m_player1Sprite = default;
-    /// <summary>プレイヤー2のSprite </summary>
-    [SerializeField] Sprite m_player2Sprite = default;
     private string messege = " ";
     [SerializeField]
     bool m_soloPlayMode = false;
@@ -138,10 +134,6 @@ public class NetworkGameManager : MonoBehaviourPunCallbacks // Photon Realtime �
 
         // プレイヤーを生成し、他のクライアントと同期する
         GameObject player = PhotonNetwork.Instantiate(m_playerPrefabName, spawnPoint.position, spawnPoint.rotation);
-        
-        //プレイヤーの色を変える
-        if (actorNumber == 1) player.GetComponent<SpriteRenderer>().sprite = m_player1Sprite;
-        if (actorNumber == 2) player.GetComponent<SpriteRenderer>().sprite = m_player2Sprite;
 
         /* **************************************************
          * ルームに参加している人数が最大に達したら部屋を閉じる（参加を締め切る）
