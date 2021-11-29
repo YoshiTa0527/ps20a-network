@@ -18,15 +18,14 @@ public class PlayerColorController : MonoBehaviour
         if (PhotonNetwork.LocalPlayer.ActorNumber == 2)
         {
             m_photonView = GetComponent<PhotonView>();
-            GetComponent<SpriteRenderer>().sprite = m_player2Sprite;
-            m_photonView.RPC("ChangeColor", RpcTarget.All);
+            m_photonView.RPC("ChangeColor", RpcTarget.All, m_photonView.ViewID);
         }
     }
 
     [PunRPC]
-    void ChangeColor()
+    void ChangeColor(int id)
     {
-        if (PhotonNetwork.LocalPlayer.ActorNumber == 2)
+        if (m_photonView.ViewID == id)
             GetComponent<SpriteRenderer>().sprite = m_player2Sprite;
     }
 }
