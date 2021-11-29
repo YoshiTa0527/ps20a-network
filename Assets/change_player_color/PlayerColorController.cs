@@ -11,31 +11,10 @@ public class PlayerColorController : MonoBehaviour
     PhotonView m_photonView = default;
 
     /// <summary>プレイヤー2のSprite </summary>
-    [SerializeField] Sprite m_player2Sprite = default;
+    [SerializeField] Sprite m_mySprite = default;
 
     private void Start()
     {
-        m_photonView = GetComponent<PhotonView>();
-        m_photonView.RPC("ChangeColor", RpcTarget.All);
-    }
-
-    [PunRPC]
-    void ChangeColor()
-    {
-        if (PhotonNetwork.LocalPlayer.ActorNumber == 2)
-        {
-            GetComponent<SpriteRenderer>().sprite = m_player2Sprite;
-        }
-        else
-        {
-            PlayerColorController[] playerColorControllers = FindObjectsOfType<PlayerColorController>();
-            for (int i = 0; i < playerColorControllers.Length; i++)
-            {
-                if (playerColorControllers[i].gameObject != gameObject)
-                {
-                    playerColorControllers[i].gameObject.GetComponent<SpriteRenderer>().sprite = m_player2Sprite;
-                }
-            }
-        }
+        GetComponent<SpriteRenderer>().sprite = m_mySprite;
     }
 }
