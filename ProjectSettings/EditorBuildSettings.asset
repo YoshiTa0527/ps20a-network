@@ -5,7 +5,7 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Loader.unity
     guid: a0410b9aa640fd74b9f610f4ad092eb6
   - enabled: 0
@@ -17,6 +17,9 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Scenes/Tanaka.unity
     guid: 88bfa61946897a841ac023e4cba54076
+  - enabled: 1
+    path: Assets/adhustment/LobbyCopied.unity
+    guid: 477698e0039c7cb43a9aed6e6f71f5cd
   - enabled: 1
     path: Assets/adhustment/AdjustmentScene.unity
     guid: b6ea9030f1adbd9448bdae9dcab65876
