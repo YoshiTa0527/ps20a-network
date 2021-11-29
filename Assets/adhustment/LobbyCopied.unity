@@ -2942,6 +2942,11 @@ PrefabInstance:
       propertyPath: m_seSlider
       value: 
       objectReference: {fileID: 671725352}
+    - target: {fileID: 4208735919083707041, guid: 11fc1c4eb687dcb4b8e2a96568f1c3b5,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4208735919083707042, guid: 11fc1c4eb687dcb4b8e2a96568f1c3b5,
         type: 3}
       propertyPath: m_LocalPosition.x

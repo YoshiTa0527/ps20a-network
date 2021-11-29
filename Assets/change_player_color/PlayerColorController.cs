@@ -15,6 +15,9 @@ public class PlayerColorController : MonoBehaviour
 
     private void Start()
     {
-        GetComponent<SpriteRenderer>().sprite = m_mySprite;
+        m_photonView = GetComponent<PhotonView>();
+
+        if (m_photonView.IsMine)
+            GetComponent<SpriteRenderer>().sprite = m_mySprite;
     }
 }
