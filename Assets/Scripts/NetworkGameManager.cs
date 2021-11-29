@@ -12,8 +12,11 @@ public class NetworkGameManager : MonoBehaviourPunCallbacks // Photon Realtime �
     /// <summary>プレイヤーを生成する場所を示すアンカーのオブジェクト</summary>
     [SerializeField] Transform[] m_spawnPositions = default;
     private string messege = " ";
-    [SerializeField]
-    bool m_soloPlayMode = false;
+    [SerializeField] bool m_soloPlayMode = false;
+    /// <summary>
+    /// 2Pのイメージ
+    /// </summary>
+    [SerializeField] Sprite m_sprite2P= default;
 
     /// <summary>
     /// プレイヤー名
@@ -154,7 +157,7 @@ public class NetworkGameManager : MonoBehaviourPunCallbacks // Photon Realtime �
         }
     }
 
-    void Raise()
+void Raise()
     {
         byte eventCode = 0;
         RaiseEventOptions raiseEventOptions = new RaiseEventOptions
