@@ -479,9 +479,8 @@ MonoBehaviour:
   m_spawnPositions:
   - {fileID: 922636585}
   - {fileID: 973119565}
-  m_player1Sprite: {fileID: 21300000, guid: 8ac58f14c22722c4882df2400e0834dc, type: 3}
-  m_player2Sprite: {fileID: 21300000, guid: b84e5638a704ffc45a1fb13a3725237c, type: 3}
   m_soloPlayMode: 0
+  m_sprite2P: {fileID: 0}
 --- !u!4 &337689364
 Transform:
   m_ObjectHideFlags: 0
@@ -503,14 +502,14 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 337689362}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2afb895c2f0379a4a80ca01c27ca9980, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   m_limitTime: 50
   m_limitTimeText: {fileID: 155517677}
-  m_isGameStart: 0
+  m_isGameStart: 1
 --- !u!114 &337689366
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2222,6 +2221,21 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2500419257780088857, guid: 7f45bf91bccadfc40bfac584af661828,
+        type: 3}
+      propertyPath: m_Color.r
+      value: 0.38679248
+      objectReference: {fileID: 0}
+    - target: {fileID: 2500419257780088857, guid: 7f45bf91bccadfc40bfac584af661828,
+        type: 3}
+      propertyPath: m_Color.g
+      value: 0.38679248
+      objectReference: {fileID: 0}
+    - target: {fileID: 2500419257780088857, guid: 7f45bf91bccadfc40bfac584af661828,
+        type: 3}
+      propertyPath: m_Color.b
+      value: 0.38679248
+      objectReference: {fileID: 0}
     - target: {fileID: 2500419257849078434, guid: 7f45bf91bccadfc40bfac584af661828,
         type: 3}
       propertyPath: m_AnchoredPosition.x
@@ -2261,6 +2275,31 @@ PrefabInstance:
         type: 3}
       propertyPath: sceneViewId
       value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 2500419257876755444, guid: 7f45bf91bccadfc40bfac584af661828,
+        type: 3}
+      propertyPath: m_Color.r
+      value: 0.38679248
+      objectReference: {fileID: 0}
+    - target: {fileID: 2500419257876755444, guid: 7f45bf91bccadfc40bfac584af661828,
+        type: 3}
+      propertyPath: m_Color.g
+      value: 0.38679248
+      objectReference: {fileID: 0}
+    - target: {fileID: 2500419257876755444, guid: 7f45bf91bccadfc40bfac584af661828,
+        type: 3}
+      propertyPath: m_Color.b
+      value: 0.38679248
+      objectReference: {fileID: 0}
+    - target: {fileID: 2500419257933430845, guid: 7f45bf91bccadfc40bfac584af661828,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2500419257933430845, guid: 7f45bf91bccadfc40bfac584af661828,
+        type: 3}
+      propertyPath: m_isGameStart
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2500419258185403572, guid: 7f45bf91bccadfc40bfac584af661828,
         type: 3}
